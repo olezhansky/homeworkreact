@@ -1,0 +1,41 @@
+.ProductItem {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background:#ccc;
+}
+.ProductItemImg {
+    background-color: #fff;
+    text-align: center;
+}
+.ProductItem img {
+    width: 100px;
+    height: 150px;
+}
+.ProductItemName,
+.ProductItemCode {
+    padding: 10px;
+}
+
+.ProductItemBottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.Button {
+    background-color: #1e1e20;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    padding: 10px 5px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.Star {
+    padding: 10px;
+    display: block;
+    display: inline-block;
+}
+
