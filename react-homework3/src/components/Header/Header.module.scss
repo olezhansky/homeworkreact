@@ -1,0 +1,39 @@
+.Header {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+.MenuList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 20px 0;
+}
+
+.MenuList li {
+  color: #fff;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+}
+.MenuList li a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s;
+  border-bottom: 2px solid transparent;
+}
+.MenuList li a:hover {
+  color: #e74c3c;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #e74c3c;
+}
+.MenuList li a.active {
+  color: #e74c3c;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #e74c3c;
+}
