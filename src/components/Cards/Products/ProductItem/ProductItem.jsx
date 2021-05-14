@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import styles from "./ProductItem.module.scss";
 import PropTypes from "prop-types";
 
-const ProductItem = ({ product, addToCart }) => {
+const ProductItem = ({ product, addToCart, addToFavorite }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-  const setFavorite = (id) => {
+  const setFavorite = () => {
     setIsFavorite(!isFavorite);
 
     if (!localStorage.getItem("favorite")) {
@@ -48,19 +48,22 @@ const ProductItem = ({ product, addToCart }) => {
         <div className={styles.ProductItemColor}>
           Color: <span className={styleColor}>{product.color}</span>
         </div>
-        <div className={styles.Star} onClick={() => setFavorite(addToCart.id)}>
-          {isFavorite ? (
-            <i
-              className="fas fa-star"
-              style={{ cursor: "pointer", color: "purple" }}
-            ></i>
-          ) : (
-            <i
-              className="far fa-star"
-              style={{ cursor: "pointer", color: "purple" }}
-            ></i>
-          )}
+        <div onClick={() => addToFavorite(product.id)}>
+          <div className={styles.Star} onClick={setFavorite}>
+            {isFavorite ? (
+              <i
+                className="fas fa-star"
+                style={{ cursor: "pointer", color: "purple" }}
+              ></i>
+            ) : (
+              <i
+                className="far fa-star"
+                style={{ cursor: "pointer", color: "purple" }}
+              ></i>
+            )}
+          </div>
         </div>
+       
         <div className={styles.ProductItemCode}>Code: {product.code}</div>
         <div className={styles.ProductItemBottom}>
           <div className={styles.ProductItemPrice}>Price: {product.price}$</div>
@@ -86,3 +89,4 @@ ProductItem.propTypes = {
 };
 
 export default ProductItem;
+

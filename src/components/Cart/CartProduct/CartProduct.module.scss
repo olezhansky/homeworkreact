@@ -1,0 +1,19 @@
+.Cart {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+}
+.CartButtonClose {
+    text-align: right;
+}
+.CartButtonClose img {
+    cursor: pointer;
+    background-color: none;
+    background: red;
+ 
+}
+.CartImg img {
+    width: 200px;
+    height: 200px;
+}

@@ -1,13 +1,13 @@
-.ProductItem {
+.FavoriteItem {
     border: 1px solid #ccc;
     border-radius: 5px;
     background:#ccc;
 }
-.ProductItemImg {
+.FavoriteItemImg {
     background-color: #fff;
     text-align: center;
 }
-.ProductItem img {
+.FavoriteItem img {
     width: 200px;
     height: 200px;
 }
@@ -15,39 +15,26 @@
     padding: 10px;
 }
 
-.ProductItemColor {
+.FavoriteItemColor {
     margin-top: 5px;
 }
 
-.Blue {
-    color: blue;
-    font-weight: 700;
-}
-.Red {
-    color: red;
-    font-weight: 700;
-}
-.Black {
-    color: black;
-    font-weight: 700;
-}
 .Star {
     margin-top: 5px;
 }
 
-.ProductItemCode {
+.FavoriteItemCode {
     margin-top: 5px;
 }
 
-
-.ProductItemBottom {
+.FavoriteItemBottom {
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.ProductItemPrice {
+.FavoriteItemPrice {
     font-weight: 700;
 }
 
