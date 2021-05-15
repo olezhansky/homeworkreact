@@ -39,6 +39,7 @@ const ProductItem = ({ product, addToCart, addToFavorite }) => {
   } else {
     styleColor = styles.Black;
   }
+
   return (
     <li className={styles.ProductItem}>
       <div className={styles.ProductItemImg}>
@@ -67,7 +68,6 @@ const ProductItem = ({ product, addToCart, addToFavorite }) => {
             )}
           </div>
         </div>
-
         <div className={styles.ProductItemCode}>Code: {product.code}</div>
         <div className={styles.ProductItemBottom}>
           <div className={styles.ProductItemPrice}>Price: {product.price}$</div>
@@ -85,11 +85,9 @@ const ProductItem = ({ product, addToCart, addToFavorite }) => {
 };
 
 ProductItem.propTypes = {
-  img: PropTypes.string,
-  name: PropTypes.string,
-  id: PropTypes.string,
-  code: PropTypes.string,
-  price: PropTypes.string,
+  product: PropTypes.object,
+  addToCart: PropTypes.func,
+  addToFavorite: PropTypes.func,
 };
 
 export default ProductItem;

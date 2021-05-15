@@ -21,7 +21,9 @@ const Products = ({ products, addToCart, addToFavorite }) => {
 };
 
 Products.propTypes = {
+  products: PropTypes.array,
   addToCart: PropTypes.func,
+  addToFavorite: PropTypes.func,
 };
 
 export default Products;

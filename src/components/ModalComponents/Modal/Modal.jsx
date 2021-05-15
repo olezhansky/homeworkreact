@@ -45,10 +45,10 @@ const Modal = ({ header, dataForModalCard, closeButton, actions, onClick }) => {
 
 Modal.propTypes = {
   header: PropTypes.string,
+  dataForModalCard: PropTypes.object,
   closeButton: PropTypes.func,
   actions: PropTypes.object,
   onClick: PropTypes.func,
-  dataForModalCard: PropTypes.object,
 };
 
 export default Modal;

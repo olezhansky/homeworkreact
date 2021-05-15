@@ -3,11 +3,11 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import styles from "./App.module.scss";
 import Button from "./components/UI/Button/Button";
 import Modal from "./components/ModalComponents/Modal/Modal";
-import Products from "./components/Products/Products";
+import Products from "./pages/Products/Products";
 import getProducts from "./api/getProducts";
-import Header from "./components/Header/Header";
-import Favorite from "./components/Favorite/Favorite";
-import Cart from "./components/Cart/Cart";
+import Header from "./containers/Header/Header";
+import Favorite from "./pages/Favorite/Favorite";
+import Cart from "./pages/Cart/Cart";
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -70,7 +70,6 @@ const App = () => {
   };
 
   const handleAddToFavorite = (id) => {
-    console.log(id);
     if (dataForFavorite.find((product) => product.id === id)) {
       setDataForFavorite(
         dataForFavorite.filter((product) => product.id !== id)

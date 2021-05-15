@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Header = ({ dataForModalCart, dataForFavorite }) => {
-  console.log(dataForFavorite);
   return (
     <div className={styles.Header}>
       <nav className={styles.Menu}>
@@ -18,7 +18,7 @@ const Header = ({ dataForModalCart, dataForFavorite }) => {
               Favorites
             </NavLink>
             &nbsp;
-            <i class="far fa-grin-stars"></i>
+            <i className="far fa-grin-stars"></i>
             &nbsp;
             <span className={styles.CounterFavorite}>
               {dataForFavorite.length !== 0 && dataForFavorite.length}
@@ -39,6 +39,11 @@ const Header = ({ dataForModalCart, dataForFavorite }) => {
       </nav>
     </div>
   );
+};
+
+Header.propTypes = {
+  dataForModalCart: PropTypes.array,
+  dataForFavorite: PropTypes.array,
 };
 
 export default Header;

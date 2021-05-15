@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "./FavoriteProduct.module.scss";
 import PropTypes from "prop-types";
 
@@ -21,7 +21,6 @@ const FavoriteProduct = ({ product, onClick, addToCart }) => {
             ></i>
           </div>
         </div>
-
         <div className={styles.FavoriteItemCode}>Code: {product.code}</div>
         <div className={styles.FavoriteItemBottom}>
           <div className={styles.FavoriteItemPrice}>
@@ -38,6 +37,12 @@ const FavoriteProduct = ({ product, onClick, addToCart }) => {
       </div>
     </li>
   );
+};
+
+FavoriteProduct.propTypes = {
+  product: PropTypes.object,
+  onClick: PropTypes.func,
+  addToCart: PropTypes.func,
 };
 
 export default FavoriteProduct;

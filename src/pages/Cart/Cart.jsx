@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "./Cart.module.scss";
 import CartProduct from "./CartProduct/CartProduct";
 import cartEmpty from "../../img/emptyCart.png";
+import PropTypes from "prop-types";
 
 const Cart = ({ products, onClick }) => {
   return (
@@ -21,6 +22,11 @@ const Cart = ({ products, onClick }) => {
       </ul>
     </>
   );
+};
+
+Cart.propTypes = {
+  products: PropTypes.array,
+  onClick: PropTypes.func,
 };
 
 export default Cart;

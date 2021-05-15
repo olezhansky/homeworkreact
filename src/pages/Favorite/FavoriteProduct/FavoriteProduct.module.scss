@@ -15,6 +15,13 @@
   padding: 10px;
 }
 
+.ProductItemName {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
 .FavoriteItemColor {
   margin-top: 5px;
 }
@@ -31,7 +38,7 @@
 }
 
 .FavoriteItemBottom {
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;

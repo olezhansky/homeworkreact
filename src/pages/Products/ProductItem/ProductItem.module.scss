@@ -3,16 +3,26 @@
   border-radius: 5px;
   background: #ccc;
 }
+
 .ProductItemImg {
   background-color: #fff;
   text-align: center;
 }
+
 .ProductItem img {
   width: 200px;
   height: 200px;
 }
+
 .Content {
   padding: 10px;
+}
+
+.ProductItemName {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
 
 .ProductItemColor {
@@ -23,19 +33,24 @@
   color: blue;
   font-weight: 700;
 }
+
 .Red {
   color: red;
   font-weight: 700;
 }
+
 .Black {
   color: black;
   font-weight: 700;
 }
+
 .StarContainer {
   display: inline-block;
 }
+
 .Star {
   margin-top: 5px;
+  display: inline-block;
 }
 
 .ProductItemCode {
@@ -43,7 +58,7 @@
 }
 
 .ProductItemBottom {
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,8 +79,4 @@
   cursor: pointer;
   font-size: 12px;
   font-weight: 700;
-}
-.Star {
-  display: block;
-  display: inline-block;
 }

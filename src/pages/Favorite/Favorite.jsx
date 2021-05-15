@@ -1,10 +1,9 @@
 import React from "react";
 import styles from "./Favorite.module.scss";
 import FavoriteProduct from "./FavoriteProduct/FavoriteProduct";
+import PropTypes from "prop-types";
 
 const Favorite = ({ dataForFavorite, onClick, addToCart }) => {
-  console.log(dataForFavorite);
-
   return (
     <>
       {!dataForFavorite.length && (
@@ -24,6 +23,12 @@ const Favorite = ({ dataForFavorite, onClick, addToCart }) => {
       </ul>
     </>
   );
+};
+
+Favorite.propTypes = {
+  dataForFavorite: PropTypes.array,
+  onClick: PropTypes.func,
+  addToCart: PropTypes.func,
 };
 
 export default Favorite;

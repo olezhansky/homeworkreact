@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./CartProduct.module.scss";
 import closeImg from "../../../img/closeImg.png";
+import PropTypes from "prop-types";
 
 const Cart = ({ product, onClick }) => {
   return (
@@ -12,7 +13,6 @@ const Cart = ({ product, onClick }) => {
           onClick={() => onClick(product.id)}
         />
       </div>
-
       <h3>{product.name}</h3>
       <div className={styles.CartMain}>
         <div className={styles.CartImg}>
@@ -32,6 +32,11 @@ const Cart = ({ product, onClick }) => {
       </div>
     </li>
   );
+};
+
+Cart.propTypes = {
+  product: PropTypes.object,
+  onClick: PropTypes.func,
 };
 
 export default Cart;
