@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import styles from "./App.module.scss";
 import Button from "./components/UI/Button/Button";
 import Modal from "./components/ModalComponents/Modal/Modal";
-import Products from "./components/Cards/Products/Products";
+import Products from "./components/Products/Products";
 import getProducts from "./api/getProducts";
 import Header from "./components/Header/Header";
 import Favorite from "./components/Favorite/Favorite";
