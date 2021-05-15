@@ -3,7 +3,7 @@ import styles from "./Products.module.scss";
 import ProductItem from "./ProductItem/ProductItem";
 import PropTypes from "prop-types";
 
-const Products = ({ products, addToCart, addToFavorite}) => {
+const Products = ({ products, addToCart, addToFavorite }) => {
   return (
     <ul className={styles.Products}>
       {products.map((product) => {

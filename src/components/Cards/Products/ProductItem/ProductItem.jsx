@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 const ProductItem = ({ product, addToCart, addToFavorite }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+
   const setFavorite = () => {
     setIsFavorite(!isFavorite);
 
@@ -48,7 +49,10 @@ const ProductItem = ({ product, addToCart, addToFavorite }) => {
         <div className={styles.ProductItemColor}>
           Color: <span className={styleColor}>{product.color}</span>
         </div>
-        <div onClick={() => addToFavorite(product.id)}>
+        <div
+          className={styles.StarContainer}
+          onClick={() => addToFavorite(product.id)}
+        >
           <div className={styles.Star} onClick={setFavorite}>
             {isFavorite ? (
               <i
@@ -63,7 +67,7 @@ const ProductItem = ({ product, addToCart, addToFavorite }) => {
             )}
           </div>
         </div>
-       
+
         <div className={styles.ProductItemCode}>Code: {product.code}</div>
         <div className={styles.ProductItemBottom}>
           <div className={styles.ProductItemPrice}>Price: {product.price}$</div>
@@ -89,4 +93,3 @@ ProductItem.propTypes = {
 };
 
 export default ProductItem;
-
