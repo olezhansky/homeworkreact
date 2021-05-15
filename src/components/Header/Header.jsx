@@ -18,7 +18,11 @@ const Header = ({ dataForModalCart, dataForFavorite }) => {
               Favorites
             </NavLink>
             &nbsp;
-            {dataForFavorite.length !== 0 && dataForFavorite.length}
+            <i class="far fa-grin-stars"></i>
+            &nbsp;
+            <span className={styles.CounterFavorite}>
+              {dataForFavorite.length !== 0 && dataForFavorite.length}
+            </span>
           </li>
           <li>
             <NavLink activeClassName={styles.active} to="/cart">
@@ -27,7 +31,7 @@ const Header = ({ dataForModalCart, dataForFavorite }) => {
             &nbsp;
             <i className="fas fa-shopping-cart"></i>
             &nbsp;
-            <span className={styles.Counter}>
+            <span className={styles.CounterCart}>
               {dataForModalCart.length !== 0 && dataForModalCart.length}
             </span>
           </li>

@@ -1,57 +1,59 @@
 .FavoriteItem {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background:#ccc;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #ccc;
 }
 .FavoriteItemImg {
-    background-color: #fff;
-    text-align: center;
+  background-color: #fff;
+  text-align: center;
 }
 .FavoriteItem img {
-    width: 200px;
-    height: 200px;
+  width: 200px;
+  height: 200px;
 }
 .Content {
-    padding: 10px;
+  padding: 10px;
 }
 
 .FavoriteItemColor {
-    margin-top: 5px;
+  margin-top: 5px;
+}
+.FavoriteItemColor span {
+  font-weight: 700;
 }
 
 .Star {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .FavoriteItemCode {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 
 .FavoriteItemBottom {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .FavoriteItemPrice {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .Button {
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    padding: 10px 5px;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: 700;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
 }
 .Star {
-    display: block;
-    display: inline-block;
+  display: block;
+  display: inline-block;
 }
-

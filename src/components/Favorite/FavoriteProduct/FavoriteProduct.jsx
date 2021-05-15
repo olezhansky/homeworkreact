@@ -3,33 +3,6 @@ import styles from "./FavoriteProduct.module.scss";
 import PropTypes from "prop-types";
 
 const FavoriteProduct = ({ product, onClick, addToCart }) => {
-  // const [isFavorite, setIsFavorite] = useState(false);
-
-  // const setFavorite = () => {
-  //   setIsFavorite(!isFavorite);
-  //   if (!localStorage.getItem("favorite")) {
-  //     localStorage.setItem("favorite", product.id);
-  //   } else {
-  //     const favoriteArr = localStorage.getItem("favorite").split(",");
-  //     if (!favoriteArr.includes(product.id)) {
-  //       favoriteArr.push(product.id);
-  //       localStorage.setItem("favorite", favoriteArr);
-  //     } else {
-  //       const newFavorite = favoriteArr.filter((item) => item !== product.id);
-  //       localStorage.setItem("favorite", newFavorite);
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   if (localStorage.getItem("favorite")) {
-  //     const arr = localStorage.getItem("favorite").split(",");
-  //     if (arr.includes(product.id)) {
-  //       setIsFavorite(!isFavorite);
-  //     }
-  //   }
-  // }, []);
-
   return (
     <li className={styles.FavoriteItem}>
       <div className={styles.FavoriteItemImg}>
@@ -40,7 +13,7 @@ const FavoriteProduct = ({ product, onClick, addToCart }) => {
         <div className={styles.FavoriteItemColor}>
           Color: <span>{product.color}</span>
         </div>
-        <div>
+        <div className={styles.Star}>
           <div onClick={() => onClick(product.id)}>
             <i
               className="fas fa-star"
