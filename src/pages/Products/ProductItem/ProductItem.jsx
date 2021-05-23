@@ -1,35 +1,33 @@
 import React, { useState, useEffect } from "react";
 import styles from "./ProductItem.module.scss";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 
-const ProductItem = ({ product, addToCart, addToFavorite }) => {
+const ProductItem = ({ product, addToFavorite, dataForFavoriteId }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const setFavorite = () => {
+  const handleSetFavorite = () => {
+    addToFavorite(product.id);
     setIsFavorite(!isFavorite);
-
-    if (!localStorage.getItem("favorite")) {
-      localStorage.setItem("favorite", product.id);
-    } else {
-      const favoriteArr = localStorage.getItem("favorite").split(",");
-      if (!favoriteArr.includes(product.id)) {
-        favoriteArr.push(product.id);
-        localStorage.setItem("favorite", favoriteArr);
-      } else {
-        const newFavorite = favoriteArr.filter((item) => item !== product.id);
-        localStorage.setItem("favorite", newFavorite);
-      }
-    }
   };
 
   useEffect(() => {
-    if (localStorage.getItem("favorite")) {
-      const arr = localStorage.getItem("favorite").split(",");
-      if (arr.includes(product.id)) {
-        setIsFavorite(!isFavorite);
+    dataForFavoriteId.forEach((item) => {
+      if (item === product.id) {
+        setIsFavorite(true);
       }
-    }
-  }, []);
+    });
+  }, [dataForFavoriteId, product.id]);
+
+  const dispatch = useDispatch();
+
+  const handleOpenModal = () => {
+    dispatch({
+      type: "OPEN_MODAL_FOR_ADD_TO_CART_PRODUCT",
+      payload: product.id,
+    });
+  };
+  
 
   let styleColor = "";
   if (product.color === "Red") {
@@ -50,11 +48,8 @@ const ProductItem = ({ product, addToCart, addToFavorite }) => {
         <div className={styles.ProductItemColor}>
           Color: <span className={styleColor}>{product.color}</span>
         </div>
-        <div
-          className={styles.StarContainer}
-          onClick={() => addToFavorite(product.id)}
-        >
-          <div className={styles.Star} onClick={setFavorite}>
+        <div className={styles.StarContainer}>
+          <div className={styles.Star} onClick={handleSetFavorite}>
             {isFavorite ? (
               <i
                 className="fas fa-star"
@@ -71,10 +66,7 @@ const ProductItem = ({ product, addToCart, addToFavorite }) => {
         <div className={styles.ProductItemCode}>Code: {product.code}</div>
         <div className={styles.ProductItemBottom}>
           <div className={styles.ProductItemPrice}>Price: {product.price}$</div>
-          <button
-            onClick={() => addToCart(product.id)}
-            className={styles.Button}
-          >
+          <button onClick={handleOpenModal} className={styles.Button}>
             Add to cart &nbsp;
             <i className="fas fa-shopping-cart"></i>
           </button>
@@ -88,6 +80,7 @@ ProductItem.propTypes = {
   product: PropTypes.object,
   addToCart: PropTypes.func,
   addToFavorite: PropTypes.func,
+  dataForFavoriteId: PropTypes.array,
 };
 
 export default ProductItem;

@@ -3,14 +3,14 @@ import styles from "./Products.module.scss";
 import ProductItem from "./ProductItem/ProductItem";
 import PropTypes from "prop-types";
 
-const Products = ({ products, addToCart, addToFavorite }) => {
+const Products = ({ products, addToFavorite, dataForFavoriteId }) => {
   return (
     <ul className={styles.Products}>
       {products.map((product) => {
         return (
           <ProductItem
+            dataForFavoriteId={dataForFavoriteId}
             addToFavorite={addToFavorite}
-            addToCart={addToCart}
             key={product.id}
             product={product}
           />
@@ -24,6 +24,7 @@ Products.propTypes = {
   products: PropTypes.array,
   addToCart: PropTypes.func,
   addToFavorite: PropTypes.func,
+  dataForFavoriteId: PropTypes.array,
 };
 
 export default Products;

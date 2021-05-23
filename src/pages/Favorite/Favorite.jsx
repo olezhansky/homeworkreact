@@ -3,7 +3,7 @@ import styles from "./Favorite.module.scss";
 import FavoriteProduct from "./FavoriteProduct/FavoriteProduct";
 import PropTypes from "prop-types";
 
-const Favorite = ({ dataForFavorite, onClick, addToCart }) => {
+const Favorite = ({ dataForFavorite, deleteFromFavorite, addToCart }) => {
   return (
     <>
       {!dataForFavorite.length && (
@@ -16,7 +16,7 @@ const Favorite = ({ dataForFavorite, onClick, addToCart }) => {
               addToCart={addToCart}
               product={product}
               key={index}
-              onClick={onClick}
+              deleteFromFavorite={deleteFromFavorite}
             />
           );
         })}
@@ -27,7 +27,7 @@ const Favorite = ({ dataForFavorite, onClick, addToCart }) => {
 
 Favorite.propTypes = {
   dataForFavorite: PropTypes.array,
-  onClick: PropTypes.func,
+  deleteFromFavorite: PropTypes.func,
   addToCart: PropTypes.func,
 };
 

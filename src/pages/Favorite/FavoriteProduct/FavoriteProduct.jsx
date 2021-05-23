@@ -1,8 +1,18 @@
 import React from "react";
 import styles from "./FavoriteProduct.module.scss";
 import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
 
-const FavoriteProduct = ({ product, onClick, addToCart }) => {
+const FavoriteProduct = ({ product, deleteFromFavorite, addToCart }) => {
+  const isOpenModalForAddToCart = useSelector(
+    (state) => state.isOpenModalForAddToCart
+  );
+  const dispatch = useDispatch();
+
+  const handleOpenModal = () => {
+    dispatch({type: 'OPEN_MODAL_FOR_ADD_TO_CART_FAVORITE_PRODUCT', payload: product.id})
+  };
+
   return (
     <li className={styles.FavoriteItem}>
       <div className={styles.FavoriteItemImg}>
@@ -14,7 +24,7 @@ const FavoriteProduct = ({ product, onClick, addToCart }) => {
           Color: <span>{product.color}</span>
         </div>
         <div className={styles.Star}>
-          <div onClick={() => onClick(product.id)}>
+          <div onClick={() => deleteFromFavorite(product.id)}>
             <i
               className="fas fa-star"
               style={{ cursor: "pointer", color: "purple" }}
@@ -26,10 +36,7 @@ const FavoriteProduct = ({ product, onClick, addToCart }) => {
           <div className={styles.FavoriteItemPrice}>
             Price: {product.price}$
           </div>
-          <button
-            className={styles.Button}
-            onClick={() => addToCart(product.id)}
-          >
+          <button className={styles.Button} onClick={handleOpenModal}>
             Add to cart &nbsp;
             <i className="fas fa-shopping-cart"></i>
           </button>
@@ -41,7 +48,7 @@ const FavoriteProduct = ({ product, onClick, addToCart }) => {
 
 FavoriteProduct.propTypes = {
   product: PropTypes.object,
-  onClick: PropTypes.func,
+  deleteFromFavorite: PropTypes.func,
   addToCart: PropTypes.func,
 };
 
