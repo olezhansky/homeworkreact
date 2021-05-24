@@ -2,8 +2,12 @@ import React from "react";
 import styles from "./Favorite.module.scss";
 import FavoriteProduct from "./FavoriteProduct/FavoriteProduct";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-const Favorite = ({ dataForFavorite, deleteFromFavorite, addToCart }) => {
+const Favorite = ({ deleteFromFavorite, addToCart }) => {
+
+  const dataForFavorite = useSelector(state => state.dataForFavorite)
+
   return (
     <>
       {!dataForFavorite.length && (

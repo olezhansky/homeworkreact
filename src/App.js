@@ -11,20 +11,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "./store/actions";
 
 const App = () => {
-  // const [isOpenModalForDeleteProduct, setIsOpenModalForDeleteProduct] = useState(false);
-  // const [dataForDeleteModalCart, setdataForDeleteModalCart] = useState([]);
-  const [dataForFavorite, setDataForFavorite] = useState([]);
+  // const [dataForFavorite, setDataForFavorite] = useState([]);
   const [dataForFavoriteId, setDataForFavoriteId] = useState([]);
 
+
   const dispatch = useDispatch();
+
   const products = useSelector((state) => state.products);
+
   const isLoadingProducts = useSelector((state) => state.isLoadingProducts);
   const isOpenModalForAddToCart = useSelector(
     (state) => state.isOpenModalForAddToCart
   );
   const dataForModalProduct = useSelector((state) => state.dataForModalProduct);
   const dataForModalCart = useSelector((state) => state.dataForModalCart);
-  console.log(dataForModalProduct);
+
   const isOpenModalForDeleteProduct = useSelector(
     (state) => state.isOpenModalForDeleteProduct
   );
@@ -33,37 +34,34 @@ const App = () => {
     (state) => state.dataForDeleteModalCart
   );
 
+
   useEffect(() => {
     dispatch(fetchProducts());
 
     // if (localStorage.getItem("products")) {
     //   setDataForModalCart(JSON.parse(localStorage.getItem("products")));
     // }
-    if (localStorage.getItem("favorites")) {
-      setDataForFavorite(JSON.parse(localStorage.getItem("favorites")));
-    }
-    if (localStorage.getItem("favoritesId")) {
-      setDataForFavoriteId(localStorage.getItem("favoritesId").split(","));
-    }
+    // if (localStorage.getItem("favorites")) {
+    //   setDataForFavorite(JSON.parse(localStorage.getItem("favorites")));
+    // }
+    // if (localStorage.getItem("favoritesId")) {
+    //   setDataForFavoriteId(localStorage.getItem("favoritesId").split(","));
+    // }
   }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem("products", JSON.stringify(dataForModalCart));
-  // }, [dataForModalCart]);
-
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(dataForFavorite));
-  }, [dataForFavorite]);
+    localStorage.setItem("products", JSON.stringify(dataForModalCart));
+  }, [dataForModalCart]);
+
+  // useEffect(() => {
+  //   localStorage.setItem("favorites", JSON.stringify(dataForFavorite));
+  // }, [dataForFavorite]);
 
   useEffect(() => {
     localStorage.setItem("favoritesId", dataForFavoriteId);
   }, [dataForFavoriteId]);
 
-  // const openConfirmCloseModal = (id) => {
-  //   setdataForDeleteModalCart(
-  //     dataForModalCart.filter((item) => item.id === id)
-  //   );
-  // };
+
 
   const handleCloseModal = () => {
     dispatch({ type: "CLOSE_MODAL" });
@@ -78,47 +76,58 @@ const App = () => {
     handleCloseModal();
   };
 
-  // const deleteProductWithCart = (id) => {
-  //   // setDataForModalCart(dataForModalCart.filter((item) => item.id !== id));
-  //   setIsOpenModalForDeleteProduct(false);
+  const handleDeleteProductWithCart = (id) => {
+    dispatch({type: "DELETE_PRODUCT_WITH_CART", payload: dataForDeleteModalCart[0]})
+  };
+
+
+ 
+
+
+  // const handleAddToFavorite = (id) => {
+  //   if (dataForFavorite.find((product) => product.id === id)) {
+  //     setDataForFavorite(
+  //       dataForFavorite.filter((product) => product.id !== id)
+  //     );
+  //   } else {
+  //     setDataForFavorite([
+  //       ...dataForFavorite,
+  //       ...products.filter((product) => product.id === id),
+  //     ]);
+  //   }
+
+
+
+  //   //======Favorite id ========//
+  //   if (dataForFavoriteId.includes(id)) {
+  //     setDataForFavoriteId(
+  //       dataForFavoriteId.filter((productId) => productId !== id)
+  //     );
+  //   } else {
+  //     setDataForFavoriteId([id, ...dataForFavoriteId]);
+  //   }
   // };
 
-  const handleAddToFavorite = (id) => {
-    if (dataForFavorite.find((product) => product.id === id)) {
-      setDataForFavorite(
-        dataForFavorite.filter((product) => product.id !== id)
-      );
-    } else {
-      setDataForFavorite([
-        ...dataForFavorite,
-        ...products.filter((product) => product.id === id),
-      ]);
-    }
 
-    //======Favorite id ========//
-    if (dataForFavoriteId.includes(id)) {
-      setDataForFavoriteId(
-        dataForFavoriteId.filter((productId) => productId !== id)
-      );
-    } else {
-      setDataForFavoriteId([id, ...dataForFavoriteId]);
-    }
-  };
 
-  const handleDeleteFromFavorite = (id) => {
-    //=== Delete favorite card==//
-    setDataForFavorite(dataForFavorite.filter((product) => product.id !== id));
-    //=== Delete favorite id==//
-    setDataForFavoriteId(
-      dataForFavoriteId.filter((productId) => productId !== id)
-    );
-  };
+
+
+  // const handleDeleteFromFavorite = (id) => {
+  //   //=== Delete favorite card==//
+  //   setDataForFavorite(dataForFavorite.filter((product) => product.id !== id));
+  //   //=== Delete favorite id==//
+  //   setDataForFavoriteId(
+  //     dataForFavoriteId.filter((productId) => productId !== id)
+  //   );
+  // };
+
+
 
   return (
     <div className={styles.App}>
       <Header
-        dataForModalCart={dataForModalCart}
-        dataForFavorite={dataForFavorite}
+        // dataForModalCart={dataForModalCart}
+        // dataForFavorite={dataForFavorite}
       />
       {isOpenModalForAddToCart && (
         <Modal
@@ -148,7 +157,7 @@ const App = () => {
               <Button
                 products={dataForDeleteModalCart[0]}
                 text="Delete product"
-                // onClick={deleteProductWithCart}
+                onClick={handleDeleteProductWithCart}
               />
             </>
           }
@@ -157,23 +166,16 @@ const App = () => {
       <Switch>
         <Route path="/products">
           {!isLoadingProducts && (
-            <Products
-              dataForFavoriteId={dataForFavoriteId}
-              products={products}
-              addToFavorite={handleAddToFavorite}
-            />
+            <Products />
           )}
         </Route>
         <Route path="/favorite">
           <Favorite
-            dataForFavorite={dataForFavorite}
-            deleteFromFavorite={handleDeleteFromFavorite}
           />
         </Route>
         <Route path="/cart">
           <Cart
             products={dataForModalCart}
-            // onClick={openConfirmCloseModal}
           />
         </Route>
         <Redirect to="/products" />

@@ -6,6 +6,7 @@ const initialState = {
   dataForModalCart: [],
   isOpenModalForDeleteProduct: false,
   dataForDeleteModalCart: [],
+  dataForFavorite: []
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -47,7 +48,6 @@ export const rootReducer = (state = initialState, action) => {
         dataForModalCart: [...state.dataForModalCart, action.payload],
       };
     case "OPEN_CONFIRM_CLOSE_MODAL":
-      console.log(action.payload);
       return {
         ...state,
         isOpenModalForDeleteProduct: true,
@@ -55,6 +55,29 @@ export const rootReducer = (state = initialState, action) => {
           (item) => item.id === action.payload.id
         ),
       };
+    case "DELETE_PRODUCT_WITH_CART":
+      console.log(action.payload.id)
+      return {
+        ...state,
+        dataForModalCart: state.dataForModalCart.filter((item) => item.id !== action.payload.id),
+        isOpenModalForDeleteProduct: false
+        
+      }
+    case "ADD_PRODUCT_TO_FAVORITE": 
+      const existFavorite = state.dataForFavorite.some(item => item.id === action.payload.id)
+      if (existFavorite) {
+        return {
+          ...state,
+          dataForFavorite: state.dataForFavorite.filter(item => item.id !== action.payload.id)
+        }
+      } else {
+        return {
+          ...state,
+          dataForFavorite: [...state.dataForFavorite, action.payload]
+        }
+      }
+     
+
     default:
       return state;
   }

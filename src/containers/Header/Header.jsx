@@ -21,7 +21,7 @@ const Header = ({ dataForModalCart, dataForFavorite }) => {
             <i className="far fa-grin-stars"></i>
             &nbsp;
             <span className={styles.CounterFavorite}>
-              {dataForFavorite.length !== 0 && dataForFavorite.length}
+              {/* {dataForFavorite.length !== 0 && dataForFavorite.length} */}
             </span>
           </li>
           <li>
@@ -32,7 +32,7 @@ const Header = ({ dataForModalCart, dataForFavorite }) => {
             <i className="fas fa-shopping-cart"></i>
             &nbsp;
             <span className={styles.CounterCart}>
-              {dataForModalCart.length !== 0 && dataForModalCart.length}
+              {/* {dataForModalCart.length !== 0 && dataForModalCart.length} */}
             </span>
           </li>
         </ul>

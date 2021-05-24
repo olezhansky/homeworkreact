@@ -3,21 +3,26 @@ import styles from "./ProductItem.module.scss";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 
-const ProductItem = ({ product, addToFavorite, dataForFavoriteId }) => {
+const ProductItem = ({ product, dataForFavoriteId }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const handleSetFavorite = () => {
-    addToFavorite(product.id);
-    setIsFavorite(!isFavorite);
+  const handleAddToFavorite = () => {
+
+  
+    dispatch({type: "ADD_PRODUCT_TO_FAVORITE", payload: product})
+  
+    // setIsFavorite(!isFavorite);
   };
 
-  useEffect(() => {
-    dataForFavoriteId.forEach((item) => {
-      if (item === product.id) {
-        setIsFavorite(true);
-      }
-    });
-  }, [dataForFavoriteId, product.id]);
+  // useEffect(() => {
+  //   dataForFavoriteId.forEach((item) => {
+  //     if (item === product.id) {
+  //       setIsFavorite(true);
+  //     }
+  //   });
+  // }, [dataForFavoriteId, product.id]);
+
+
 
   const dispatch = useDispatch();
 
@@ -28,6 +33,7 @@ const ProductItem = ({ product, addToFavorite, dataForFavoriteId }) => {
     });
   };
   
+
 
   let styleColor = "";
   if (product.color === "Red") {
@@ -49,7 +55,7 @@ const ProductItem = ({ product, addToFavorite, dataForFavoriteId }) => {
           Color: <span className={styleColor}>{product.color}</span>
         </div>
         <div className={styles.StarContainer}>
-          <div className={styles.Star} onClick={handleSetFavorite}>
+          <div className={styles.Star} onClick={handleAddToFavorite}>
             {isFavorite ? (
               <i
                 className="fas fa-star"

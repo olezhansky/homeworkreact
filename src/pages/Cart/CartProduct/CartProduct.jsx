@@ -11,7 +11,6 @@ const Cart = ({ product, onClick }) => {
     dispatch({ type: "OPEN_CONFIRM_CLOSE_MODAL", payload: product });
   };
 
-  
 
   return (
     <li className={styles.Cart}>
