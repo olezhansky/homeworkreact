@@ -3,19 +3,26 @@ import styles from "./Cart.module.scss";
 import CartProduct from "./CartProduct/CartProduct";
 import cartEmpty from "../../img/emptyCart.png";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-const Cart = ({ products, onClick }) => {
-  console.log(products);
+const Cart = ({onClick }) => {
+
+ const cartProducts = useSelector(state => state.cartProducts)
+
+
+
+
+
   return (
     <>
-      {!products.length && (
+      {!cartProducts.length && (
         <div className={styles.Header}>
           <h2 className={styles.Title}>Cart empty!</h2>
           <img src={cartEmpty} alt="img" />
         </div>
       )}
       <ul className={styles.Products}>
-        {products.map((product, index) => {
+        {cartProducts.map((product, index) => {
           return (
             <CartProduct product={product} key={index} onClick={onClick} />
           );

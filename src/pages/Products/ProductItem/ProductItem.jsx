@@ -2,39 +2,29 @@ import React, { useState, useEffect } from "react";
 import styles from "./ProductItem.module.scss";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
+import { addProductToFavoriteAction, openModalForAddProductToCartAction } from "../../../store/actions";
 
-const ProductItem = ({ product, dataForFavoriteId }) => {
+const ProductItem = ({ product, favoriteProducts }) => {
   const [isFavorite, setIsFavorite] = useState(false);
-
-  const handleAddToFavorite = () => {
-
-  
-    dispatch({type: "ADD_PRODUCT_TO_FAVORITE", payload: product})
-  
-    // setIsFavorite(!isFavorite);
-  };
-
-  // useEffect(() => {
-  //   dataForFavoriteId.forEach((item) => {
-  //     if (item === product.id) {
-  //       setIsFavorite(true);
-  //     }
-  //   });
-  // }, [dataForFavoriteId, product.id]);
-
-
-
   const dispatch = useDispatch();
 
-  const handleOpenModal = () => {
-    dispatch({
-      type: "OPEN_MODAL_FOR_ADD_TO_CART_PRODUCT",
-      payload: product.id,
+  useEffect(() => {
+    favoriteProducts.forEach((item) => {
+      if (item.id === product.id) {
+        setIsFavorite(true);
+      }
     });
+  }, [favoriteProducts, product.id]);
+  
+  const handleAddToFavorite = () => {
+    dispatch(addProductToFavoriteAction(product))
+    setIsFavorite(!isFavorite);
+  };
+
+  const handleOpenModal = () => {
+    dispatch(openModalForAddProductToCartAction(product.id));
   };
   
-
-
   let styleColor = "";
   if (product.color === "Red") {
     styleColor = styles.Red;

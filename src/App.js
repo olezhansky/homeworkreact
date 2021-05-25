@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import styles from "./App.module.scss";
 import Button from "./components/UI/Button/Button";
@@ -8,154 +8,93 @@ import Header from "./containers/Header/Header";
 import Favorite from "./pages/Favorite/Favorite";
 import Cart from "./pages/Cart/Cart";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "./store/actions";
+import { 
+  addProductToCartAction, 
+  fetchProducts, deleteProductFromCartAction, 
+  closeModalForAddToCartAction,
+  closeModalForDeleteProductFromCartAction
+} from "./store/actions";
 
 const App = () => {
-  // const [dataForFavorite, setDataForFavorite] = useState([]);
-  const [dataForFavoriteId, setDataForFavoriteId] = useState([]);
-
-
+  // Hook useDispatch
   const dispatch = useDispatch();
 
-  const products = useSelector((state) => state.products);
-
+  // Loading products from db
   const isLoadingProducts = useSelector((state) => state.isLoadingProducts);
-  const isOpenModalForAddToCart = useSelector(
-    (state) => state.isOpenModalForAddToCart
-  );
-  const dataForModalProduct = useSelector((state) => state.dataForModalProduct);
-  const dataForModalCart = useSelector((state) => state.dataForModalCart);
 
-  const isOpenModalForDeleteProduct = useSelector(
-    (state) => state.isOpenModalForDeleteProduct
-  );
+  // Open modal window for add product to cart
+  const isOpenModalForAddToCart = useSelector(state => state.isOpenModalForAddToCart);
 
-  const dataForDeleteModalCart = useSelector(
-    (state) => state.dataForDeleteModalCart
+  // Data for modal window that add product to cart
+  const dataForModalAddProductToCart = useSelector((state) => state.dataForModalAddProductToCart);
+
+  // Is open modal window for delete product with cart
+  const isOpenModalForDeleteProductWithCart = useSelector(
+    (state) => state.isOpenModalForDeleteProductWithCart
   );
 
+  // Data for delete product with cart
+  const productForModalDeleteWithCart = useSelector(
+    (state) => state.productForModalDeleteWithCart
+  );
 
+  // Set and render products
   useEffect(() => {
     dispatch(fetchProducts());
-
-    // if (localStorage.getItem("products")) {
-    //   setDataForModalCart(JSON.parse(localStorage.getItem("products")));
-    // }
-    // if (localStorage.getItem("favorites")) {
-    //   setDataForFavorite(JSON.parse(localStorage.getItem("favorites")));
-    // }
-    // if (localStorage.getItem("favoritesId")) {
-    //   setDataForFavoriteId(localStorage.getItem("favoritesId").split(","));
-    // }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("products", JSON.stringify(dataForModalCart));
-  }, [dataForModalCart]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("favorites", JSON.stringify(dataForFavorite));
-  // }, [dataForFavorite]);
-
-  useEffect(() => {
-    localStorage.setItem("favoritesId", dataForFavoriteId);
-  }, [dataForFavoriteId]);
+  }, [dispatch]);
 
 
-
+  // Close modal window for add to cart
   const handleCloseModal = () => {
-    dispatch({ type: "CLOSE_MODAL" });
+    dispatch(closeModalForAddToCartAction());
   };
 
-  const handleCloseDeleteProductModal = () => {
-    dispatch({ type: "CLOSE_DELETE_PRODUCT_MODAL" });
+  // Close modal window for delete product with cart
+  const handleCloseModalForDeleteWithCart = () => {
+    dispatch(closeModalForDeleteProductFromCartAction());
   };
 
-  const handleAddToCart = () => {
-    dispatch({ type: "ADD_PRODUCT_TO_CART", payload: dataForModalProduct[0] });
+  // Add product to cart  
+  const handleAddProductToCart = () => {
+    dispatch(addProductToCartAction(dataForModalAddProductToCart[0]));
     handleCloseModal();
   };
 
+  // Delete product with cart
   const handleDeleteProductWithCart = (id) => {
-    dispatch({type: "DELETE_PRODUCT_WITH_CART", payload: dataForDeleteModalCart[0]})
+    dispatch(deleteProductFromCartAction(productForModalDeleteWithCart[0]))
   };
-
-
- 
-
-
-  // const handleAddToFavorite = (id) => {
-  //   if (dataForFavorite.find((product) => product.id === id)) {
-  //     setDataForFavorite(
-  //       dataForFavorite.filter((product) => product.id !== id)
-  //     );
-  //   } else {
-  //     setDataForFavorite([
-  //       ...dataForFavorite,
-  //       ...products.filter((product) => product.id === id),
-  //     ]);
-  //   }
-
-
-
-  //   //======Favorite id ========//
-  //   if (dataForFavoriteId.includes(id)) {
-  //     setDataForFavoriteId(
-  //       dataForFavoriteId.filter((productId) => productId !== id)
-  //     );
-  //   } else {
-  //     setDataForFavoriteId([id, ...dataForFavoriteId]);
-  //   }
-  // };
-
-
-
-
-
-  // const handleDeleteFromFavorite = (id) => {
-  //   //=== Delete favorite card==//
-  //   setDataForFavorite(dataForFavorite.filter((product) => product.id !== id));
-  //   //=== Delete favorite id==//
-  //   setDataForFavoriteId(
-  //     dataForFavoriteId.filter((productId) => productId !== id)
-  //   );
-  // };
-
-
 
   return (
     <div className={styles.App}>
-      <Header
-        // dataForModalCart={dataForModalCart}
-        // dataForFavorite={dataForFavorite}
-      />
+      <Header/>
       {isOpenModalForAddToCart && (
         <Modal
           onClick={handleCloseModal}
           header="Confirm adding to cart this product"
           closeButton={handleCloseModal}
-          dataForModalCard={dataForModalProduct[0]}
+          dataForModalCard={dataForModalAddProductToCart[0]}
           actions={
             <>
               <Button
-                products={dataForModalProduct[0]}
+                products={dataForModalAddProductToCart[0]}
                 text="Add to cart"
-                onClick={handleAddToCart}
+                onClick={handleAddProductToCart}
               />
             </>
           }
         />
       )}
-      {isOpenModalForDeleteProduct && (
+      {isOpenModalForDeleteProductWithCart && (
         <Modal
-          onClick={handleCloseDeleteProductModal}
+          onClick={handleCloseModalForDeleteWithCart}
           header="Confirm delete"
-          closeButton={handleCloseDeleteProductModal}
-          dataForModalCard={dataForDeleteModalCart[0]}
+          closeButton={handleCloseModalForDeleteWithCart}
+          dataForModalCard={productForModalDeleteWithCart[0]}
           actions={
             <>
               <Button
-                products={dataForDeleteModalCart[0]}
+                products={productForModalDeleteWithCart[0]}
                 text="Delete product"
                 onClick={handleDeleteProductWithCart}
               />
@@ -174,9 +113,7 @@ const App = () => {
           />
         </Route>
         <Route path="/cart">
-          <Cart
-            products={dataForModalCart}
-          />
+          <Cart/>
         </Route>
         <Redirect to="/products" />
       </Switch>

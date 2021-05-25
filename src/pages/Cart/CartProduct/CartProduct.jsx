@@ -8,7 +8,7 @@ const Cart = ({ product, onClick }) => {
   const dispatch = useDispatch();
 
   const openConfirmCloseModal = () => {
-    dispatch({ type: "OPEN_CONFIRM_CLOSE_MODAL", payload: product });
+    dispatch({ type: "OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART", payload: product });
   };
 
 

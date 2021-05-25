@@ -5,13 +5,14 @@ import PropTypes from "prop-types";
 import {useSelector } from "react-redux";
 
 const Products = () => {
-
   const products = useSelector((state) => state.products);
+  const favoriteProducts = useSelector((state) => state.favoriteProducts);
   return (
     <ul className={styles.Products}>
       {products.map((product) => {
         return (
           <ProductItem
+            favoriteProducts={favoriteProducts}
             key={product.id}
             product={product}
           />

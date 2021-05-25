@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./FavoriteProduct.module.scss";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { deleteProductFromFavoriteAction, openModalForAddFaforiteProductToCartAction } from "../../../store/actions";
 
-const FavoriteProduct = ({ product, deleteFromFavorite, addToCart }) => {
-  const isOpenModalForAddToCart = useSelector(
-    (state) => state.isOpenModalForAddToCart
-  );
+const FavoriteProduct = ({ product}) => {
   const dispatch = useDispatch();
-
   const handleOpenModal = () => {
-    dispatch({type: 'OPEN_MODAL_FOR_ADD_TO_CART_FAVORITE_PRODUCT', payload: product.id})
+    dispatch(openModalForAddFaforiteProductToCartAction(product.id))
   };
+  const handleDeleteProductFromFavorite = () => {
+    dispatch(deleteProductFromFavoriteAction(product.id))
+  }
 
   return (
     <li className={styles.FavoriteItem}>
@@ -24,7 +24,7 @@ const FavoriteProduct = ({ product, deleteFromFavorite, addToCart }) => {
           Color: <span>{product.color}</span>
         </div>
         <div className={styles.Star}>
-          <div onClick={() => deleteFromFavorite(product.id)}>
+          <div onClick={handleDeleteProductFromFavorite}>
             <i
               className="fas fa-star"
               style={{ cursor: "pointer", color: "purple" }}

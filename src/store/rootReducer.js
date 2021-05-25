@@ -2,11 +2,11 @@ const initialState = {
   products: [],
   isLoadingProducts: true,
   isOpenModalForAddToCart: false,
-  dataForModalProduct: [],
-  dataForModalCart: [],
-  isOpenModalForDeleteProduct: false,
-  dataForDeleteModalCart: [],
-  dataForFavorite: []
+  dataForModalAddProductToCart: [],
+  cartProducts : [],
+  isOpenModalForDeleteProductWithCart: false,
+  productForModalDeleteWithCart: [],
+  favoriteProducts: [],
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -17,67 +17,73 @@ export const rootReducer = (state = initialState, action) => {
         products: action.payload.products,
         isLoadingProducts: false,
       };
-    case "OPEN_MODAL_FOR_ADD_TO_CART_PRODUCT":
+    case "OPEN_MODAL_FOR_ADD_PRODUCT_TO_CART":
       const productForModalCart = state.products.filter(
         (product) => product.id === action.payload
       );
-      console.log(productForModalCart);
       return {
         ...state,
         isOpenModalForAddToCart: true,
-        dataForModalProduct: productForModalCart,
+        dataForModalAddProductToCart: productForModalCart,
       };
-    case "OPEN_MODAL_FOR_ADD_TO_CART_FAVORITE_PRODUCT":
+    case "OPEN_MODAL_FOR_ADD_FAVORITE_PRODUCT_TO_CART":
+      const productFavoriteForModalCart = state.products.filter(
+        (product) => product.id === action.payload
+      );
       return {
         ...state,
         isOpenModalForAddToCart: true,
+        dataForModalAddProductToCart: productFavoriteForModalCart,
       };
-    case "CLOSE_MODAL":
+    case "CLOSE_MODAL_FOR_ADD_TO_CART":
       return {
         ...state,
         isOpenModalForAddToCart: false,
       };
-    case "CLOSE_DELETE_PRODUCT_MODAL":
+    case "CLOSE_MODAL_FOR_DELETE_PRODUCT_FROM_CART":
       return {
         ...state,
-        isOpenModalForDeleteProduct: false,
+        isOpenModalForDeleteProductWithCart: false,
       };
     case "ADD_PRODUCT_TO_CART":
       return {
         ...state,
-        dataForModalCart: [...state.dataForModalCart, action.payload],
+        cartProducts: [...state.cartProducts, action.payload],
       };
-    case "OPEN_CONFIRM_CLOSE_MODAL":
+    case "OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART":
       return {
         ...state,
-        isOpenModalForDeleteProduct: true,
-        dataForDeleteModalCart: state.dataForModalCart.filter(
+        isOpenModalForDeleteProductWithCart: true,
+        productForModalDeleteWithCart: state.cartProducts.filter(
           (item) => item.id === action.payload.id
         ),
       };
-    case "DELETE_PRODUCT_WITH_CART":
-      console.log(action.payload.id)
+    case "DELETE_PRODUCT_FROM_CART":
       return {
         ...state,
-        dataForModalCart: state.dataForModalCart.filter((item) => item.id !== action.payload.id),
-        isOpenModalForDeleteProduct: false
+        cartProducts: state.cartProducts.filter((item) => item.id !== action.payload.id),
+        isOpenModalForDeleteProductWithCart: false
         
       }
     case "ADD_PRODUCT_TO_FAVORITE": 
-      const existFavorite = state.dataForFavorite.some(item => item.id === action.payload.id)
+      const existFavorite = state.favoriteProducts.some(item => item.id === action.payload.id)
       if (existFavorite) {
         return {
           ...state,
-          dataForFavorite: state.dataForFavorite.filter(item => item.id !== action.payload.id)
+          favoriteProducts: state.favoriteProducts.filter(item => item.id !== action.payload.id)
         }
       } else {
         return {
           ...state,
-          dataForFavorite: [...state.dataForFavorite, action.payload]
+          favoriteProducts: [...state.favoriteProducts, action.payload]
         }
       }
+    case 'DELETE_PRODUCT_FROM_FAVORITE':
+      return {
+        ...state,
+        favoriteProducts: state.favoriteProducts.filter(item => item.id !== action.payload)
+      }
      
-
     default:
       return state;
   }

@@ -4,23 +4,21 @@ import FavoriteProduct from "./FavoriteProduct/FavoriteProduct";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
-const Favorite = ({ deleteFromFavorite, addToCart }) => {
+const Favorite = ({addToCart }) => {
 
-  const dataForFavorite = useSelector(state => state.dataForFavorite)
+  const favoriteProducts = useSelector(state => state.favoriteProducts)
 
   return (
     <>
-      {!dataForFavorite.length && (
+      {!favoriteProducts.length && (
         <h2 className={styles.Title}>Favorite empty!</h2>
       )}
       <ul className={styles.Favorite}>
-        {dataForFavorite.map((product, index) => {
+        {favoriteProducts.map((product, index) => {
           return (
             <FavoriteProduct
-              addToCart={addToCart}
               product={product}
               key={index}
-              deleteFromFavorite={deleteFromFavorite}
             />
           );
         })}
