@@ -3,14 +3,14 @@ import styles from "./CartProduct.module.scss";
 import closeImg from "../../../img/closeImg.png";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
+import { openModalForDeleteProductFromCartAction } from "../../../store/actions";
 
-const Cart = ({ product, onClick }) => {
+const Cart = ({ product }) => {
   const dispatch = useDispatch();
 
   const openConfirmCloseModal = () => {
-    dispatch({ type: "OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART", payload: product });
+    dispatch(openModalForDeleteProductFromCartAction(product));
   };
-
 
   return (
     <li className={styles.Cart}>

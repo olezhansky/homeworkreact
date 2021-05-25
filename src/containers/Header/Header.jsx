@@ -19,7 +19,7 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink activeClassName={styles.active} to="/favorite">
+            <NavLink activeClassName={styles.active} to="/favorites">
               Favorites
             </NavLink>
             &nbsp;
@@ -49,7 +49,6 @@ const Header = () => {
 Header.propTypes = {
   favoriteProducts: PropTypes.array,
   cartProducts: PropTypes.array
-  
 };
 
 export default Header;

@@ -74,9 +74,7 @@ const ProductItem = ({ product, favoriteProducts }) => {
 
 ProductItem.propTypes = {
   product: PropTypes.object,
-  addToCart: PropTypes.func,
-  addToFavorite: PropTypes.func,
-  dataForFavoriteId: PropTypes.array,
+  favoriteProducts: PropTypes.array,
 };
 
 export default ProductItem;

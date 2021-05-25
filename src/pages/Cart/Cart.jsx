@@ -5,13 +5,9 @@ import cartEmpty from "../../img/emptyCart.png";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
-const Cart = ({onClick }) => {
+const Cart = ({onClick}) => {
 
  const cartProducts = useSelector(state => state.cartProducts)
-
-
-
-
 
   return (
     <>
@@ -33,7 +29,7 @@ const Cart = ({onClick }) => {
 };
 
 Cart.propTypes = {
-  products: PropTypes.array,
+  cartProducts: PropTypes.array,
   onClick: PropTypes.func,
 };
 

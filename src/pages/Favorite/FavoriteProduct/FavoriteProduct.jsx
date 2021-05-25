@@ -2,16 +2,20 @@ import React from "react";
 import styles from "./FavoriteProduct.module.scss";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { deleteProductFromFavoriteAction, openModalForAddFaforiteProductToCartAction } from "../../../store/actions";
+import {
+  deleteProductFromFavoriteAction,
+  openModalForAddFaforiteProductToCartAction,
+} from "../../../store/actions";
 
-const FavoriteProduct = ({ product}) => {
+const FavoriteProduct = ({ product }) => {
   const dispatch = useDispatch();
+
   const handleOpenModal = () => {
-    dispatch(openModalForAddFaforiteProductToCartAction(product.id))
+    dispatch(openModalForAddFaforiteProductToCartAction(product.id));
   };
   const handleDeleteProductFromFavorite = () => {
-    dispatch(deleteProductFromFavoriteAction(product.id))
-  }
+    dispatch(deleteProductFromFavoriteAction(product.id));
+  };
 
   return (
     <li className={styles.FavoriteItem}>
@@ -48,8 +52,6 @@ const FavoriteProduct = ({ product}) => {
 
 FavoriteProduct.propTypes = {
   product: PropTypes.object,
-  deleteFromFavorite: PropTypes.func,
-  addToCart: PropTypes.func,
 };
 
 export default FavoriteProduct;

@@ -8,11 +8,14 @@ import Header from "./containers/Header/Header";
 import Favorite from "./pages/Favorite/Favorite";
 import Cart from "./pages/Cart/Cart";
 import { useDispatch, useSelector } from "react-redux";
-import { 
-  addProductToCartAction, 
-  fetchProducts, deleteProductFromCartAction, 
+import {
+  addProductToCartAction,
+  fetchProducts,
+  deleteProductFromCartAction,
   closeModalForAddToCartAction,
-  closeModalForDeleteProductFromCartAction
+  closeModalForDeleteProductFromCartAction,
+  favoriteFromLocalStorageAction,
+  cartFromLocalStorageAction,
 } from "./store/actions";
 
 const App = () => {
@@ -20,22 +23,26 @@ const App = () => {
   const dispatch = useDispatch();
 
   // Loading products from db
-  const isLoadingProducts = useSelector((state) => state.isLoadingProducts);
+  const isLoadingProducts = useSelector(state => state.isLoadingProducts);
 
   // Open modal window for add product to cart
-  const isOpenModalForAddToCart = useSelector(state => state.isOpenModalForAddToCart);
+  const isOpenModalForAddToCart = useSelector(
+    (state) => state.isOpenModalForAddToCart,
+  );
 
   // Data for modal window that add product to cart
-  const dataForModalAddProductToCart = useSelector((state) => state.dataForModalAddProductToCart);
+  const dataForModalAddProductToCart = useSelector(
+    (state) => state.dataForModalAddProductToCart,
+  );
 
   // Is open modal window for delete product with cart
   const isOpenModalForDeleteProductWithCart = useSelector(
-    (state) => state.isOpenModalForDeleteProductWithCart
+    (state) => state.isOpenModalForDeleteProductWithCart,
   );
 
   // Data for delete product with cart
   const productForModalDeleteWithCart = useSelector(
-    (state) => state.productForModalDeleteWithCart
+    (state) => state.productForModalDeleteWithCart,
   );
 
   // Set and render products
@@ -43,6 +50,17 @@ const App = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  // Save cart and favorite to local storage
+  useEffect(() => {
+    const favoriteFromLocalStorage = localStorage.getItem("favoriteProducts");
+    const cartFromLocalStorage = localStorage.getItem("cartProducts");
+    if (favoriteFromLocalStorage) {
+      dispatch(favoriteFromLocalStorageAction(favoriteFromLocalStorage));
+    }
+    if (cartFromLocalStorage) {
+      dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
+    }
+  }, [dispatch]);
 
   // Close modal window for add to cart
   const handleCloseModal = () => {
@@ -54,20 +72,20 @@ const App = () => {
     dispatch(closeModalForDeleteProductFromCartAction());
   };
 
-  // Add product to cart  
+  // Add product to cart
   const handleAddProductToCart = () => {
     dispatch(addProductToCartAction(dataForModalAddProductToCart[0]));
     handleCloseModal();
   };
 
   // Delete product with cart
-  const handleDeleteProductWithCart = (id) => {
-    dispatch(deleteProductFromCartAction(productForModalDeleteWithCart[0]))
+  const handleDeleteProductWithCart = () => {
+    dispatch(deleteProductFromCartAction(productForModalDeleteWithCart[0]));
   };
 
   return (
     <div className={styles.App}>
-      <Header/>
+      <Header />
       {isOpenModalForAddToCart && (
         <Modal
           onClick={handleCloseModal}
@@ -103,17 +121,12 @@ const App = () => {
         />
       )}
       <Switch>
-        <Route path="/products">
-          {!isLoadingProducts && (
-            <Products />
-          )}
-        </Route>
-        <Route path="/favorite">
-          <Favorite
-          />
+        <Route path="/products">{!isLoadingProducts && <Products />}</Route>
+        <Route path="/favorites">
+          <Favorite />
         </Route>
         <Route path="/cart">
-          <Cart/>
+          <Cart />
         </Route>
         <Redirect to="/products" />
       </Switch>

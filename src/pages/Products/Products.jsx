@@ -5,11 +5,11 @@ import PropTypes from "prop-types";
 import {useSelector } from "react-redux";
 
 const Products = () => {
-  const products = useSelector((state) => state.products);
-  const favoriteProducts = useSelector((state) => state.favoriteProducts);
+  const products = useSelector(state => state.products);
+  const favoriteProducts = useSelector(state => state.favoriteProducts);
   return (
     <ul className={styles.Products}>
-      {products.map((product) => {
+      {products.map(product => {
         return (
           <ProductItem
             favoriteProducts={favoriteProducts}
@@ -24,9 +24,6 @@ const Products = () => {
 
 Products.propTypes = {
   products: PropTypes.array,
-  addToCart: PropTypes.func,
-  addToFavorite: PropTypes.func,
-  dataForFavoriteId: PropTypes.array,
 };
 
 export default Products;
