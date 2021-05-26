@@ -17,6 +17,15 @@ const FavoriteProduct = ({ product }) => {
     dispatch(deleteProductFromFavoriteAction(product.id));
   };
 
+  let styleColor = "";
+  if (product.color === "Red") {
+    styleColor = styles.Red;
+  } else if (product.color === "Blue") {
+    styleColor = styles.Blue;
+  } else {
+    styleColor = styles.Black;
+  }
+
   return (
     <li className={styles.FavoriteItem}>
       <div className={styles.FavoriteItemImg}>
@@ -25,7 +34,7 @@ const FavoriteProduct = ({ product }) => {
       <div className={styles.Content}>
         <div className={styles.ProductItemName}>{product.name}</div>
         <div className={styles.FavoriteItemColor}>
-          Color: <span>{product.color}</span>
+          Color: <span className={styleColor}>{product.color}</span>
         </div>
         <div className={styles.Star}>
           <div onClick={handleDeleteProductFromFavorite}>

@@ -17,6 +17,7 @@ import {
   favoriteFromLocalStorageAction,
   cartFromLocalStorageAction,
 } from "./store/actions";
+import Home from "./pages/Home/Home";
 
 const App = () => {
   // Hook useDispatch
@@ -121,14 +122,19 @@ const App = () => {
         />
       )}
       <Switch>
-        <Route path="/products">{!isLoadingProducts && <Products />}</Route>
+        <Route path="/home">
+          <Home />
+        </Route>
+        <Route path="/products">
+          {!isLoadingProducts && <Products />}
+        </Route>
         <Route path="/favorites">
           <Favorite />
         </Route>
         <Route path="/cart">
           <Cart />
         </Route>
-        <Redirect to="/products" />
+        <Redirect to="/home" />
       </Switch>
     </div>
   );

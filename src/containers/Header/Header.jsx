@@ -14,6 +14,11 @@ const Header = () => {
       <nav className={styles.Menu}>
         <ul className={styles.MenuList}>
           <li>
+            <NavLink activeClassName={styles.active} to="/home">
+              Home
+            </NavLink>
+          </li>
+          <li>
             <NavLink activeClassName={styles.active} to="/products">
               Products
             </NavLink>

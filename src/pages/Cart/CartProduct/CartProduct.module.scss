@@ -1,8 +1,80 @@
+// .Cart {
+//   border: 1px solid #ccc;
+//   text-align: center;
+//   padding: 10px;
+//   background-color: #fff;
+// }
+// .CartButtonClose {
+//   text-align: right;
+// }
+// .CartButtonClose img {
+//   cursor: pointer;
+//   background-color: none;
+//   background: red;
+// }
+// .CartImg img {
+//   width: 200px;
+//   height: 200px;
+// }
+// .CartDescription {
+//   text-align: left;
+//   padding: 0;
+//   margin: 0;
+//   margin-top: 20px;
+//   margin-bottom: 10px;
+//   margin-left: 10px;
+//   list-style: none;
+// }
+// .CartDescription li {
+//   border-bottom: 1px solid #ccc;
+//   font-weight: 700;
+// }
+// .CartDescription li span {
+//   margin-right: 40px;
+// }
+// .Blue {
+//   color: blue;
+//   font-weight: 700;
+// }
+// .Red {
+//   color: red;
+//   font-weight: 700;
+// }
+// .Black {
+//   color: black;
+//   font-weight: 700;
+// }
 .Cart {
-  border: 1px solid #ccc;
-  text-align: center;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  padding: 5px 15px;
+  box-sizing: border-box;
+  max-width: 1160px;
   background-color: #fff;
+  border-bottom: 2px solid #ce3322;
+}
+.CartImgName {
+  width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.CartImg img {
+  max-width: 100px;
+}
+
+.CartName {
+  max-width: 200px;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 700;
+  color: rgb(91, 91, 200);
+}
+.CartPrice {
+  color: #ce3322;
+  font-weight: 700;
 }
 .CartButtonClose {
   text-align: right;
@@ -10,25 +82,22 @@
 .CartButtonClose img {
   cursor: pointer;
   background-color: none;
+  background: #ce3322;
+}
+.CartButtonClose img:hover {
+
   background: red;
 }
-.CartImg img {
-  width: 200px;
-  height: 200px;
-}
-.CartDescription {
-  text-align: left;
-  padding: 0;
-  margin: 0;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  list-style: none;
-}
-.CartDescription li {
-  border-bottom: 1px solid #ccc;
+
+.Blue {
+  color: blue;
   font-weight: 700;
 }
-.CartDescription li span {
-  margin-right: 40px;
+.Red {
+  color: red;
+  font-weight: 700;
+}
+.Black {
+  color: black;
+  font-weight: 700;
 }

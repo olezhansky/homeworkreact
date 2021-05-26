@@ -12,27 +12,56 @@ const Cart = ({ product }) => {
     dispatch(openModalForDeleteProductFromCartAction(product));
   };
 
+  let styleColor = "";
+  if (product.color === "Red") {
+    styleColor = styles.Red;
+  } else if (product.color === "Blue") {
+    styleColor = styles.Blue;
+  } else {
+    styleColor = styles.Black;
+  }
+
   return (
+    // <li className={styles.Cart}>
+    //   <div className={styles.CartButtonClose}>
+    //     <img src={closeImg} alt={"closeImg"} onClick={openConfirmCloseModal} />
+    //   </div>
+    //   <h3>{product.name}</h3>
+    //   <div className={styles.CartMain}>
+    //     <div className={styles.CartImg}>
+    //       <img src={"db/" + product.img} alt="" />
+    //     </div>
+    //     <ul className={styles.CartDescription}>
+    //       <li>
+    //         <span>Color:</span> <span className={styleColor}>{product.color}</span>
+    //       </li>
+    //       <li>
+    //         <span>Code:</span> {product.code}
+    //       </li>
+    //       <li>
+    //         <span>Price:</span> {product.price}$
+    //       </li>
+    //     </ul>
+    //   </div>
+    // </li>
     <li className={styles.Cart}>
+      <div className={styles.CartImgName}>
+        <div className={styles.CartImg}>
+          <img src={"db/" + product.img} alt={product.name} />
+        </div>
+        <div className={styles.CartName}>
+          {product.name}
+        </div>
+      </div>
+      
+      <div className={styles.CartColor}>
+        <span className={styleColor}>{product.color}</span>
+      </div>
+      <div className={styles.CartPrice}>
+        {product.price}$
+      </div>
       <div className={styles.CartButtonClose}>
         <img src={closeImg} alt={"closeImg"} onClick={openConfirmCloseModal} />
-      </div>
-      <h3>{product.name}</h3>
-      <div className={styles.CartMain}>
-        <div className={styles.CartImg}>
-          <img src={"db/" + product.img} alt="" />
-        </div>
-        <ul className={styles.CartDescription}>
-          <li>
-            <span>Color:</span> {product.color}
-          </li>
-          <li>
-            <span>Code:</span> {product.code}
-          </li>
-          <li>
-            <span>Price:</span> {product.price}$
-          </li>
-        </ul>
       </div>
     </li>
   );

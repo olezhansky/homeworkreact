@@ -113,6 +113,11 @@ export const rootReducer = (state = initialState, action) => {
           (item) => item.id !== action.payload,
         ),
       };
+    case 'CLEAR_CART':
+      return {
+        ...state,
+        cartProducts: []
+      };
     default:
       return state;
   }

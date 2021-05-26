@@ -1,0 +1,18 @@
+.CartForm {
+    width: 500px;
+}
+.CartForm label {
+display: block;
+margin-bottom: 5px;
+color: #fff;
+}
+.CartForm input {
+padding: 10px 5px;
+margin-bottom: 10px;
+width: 500px;
+outline: none;
+border: 2px solid transparent;
+}
+input:focus {
+    border: 2px solid #e74c3c;
+}
