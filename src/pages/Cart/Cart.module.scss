@@ -63,23 +63,3 @@
   font-size: 20px;
 }
 
-.ShoppingCart {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-.ShoppingCart h3 {
-  color: #fff;
-  letter-spacing: 1px;
-}
-
-.ShoppingCart button {
-  background-color: #ccc;
-  padding: 5px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-weight: 700;
-}

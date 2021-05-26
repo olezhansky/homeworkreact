@@ -22,6 +22,14 @@ const initialState = {
   isOpenModalForDeleteProductWithCart: false,
   productForModalDeleteWithCart: [],
   favoriteProducts: [],
+  totalSum: 0,
+  userData: {
+    name: '',
+    lastName: '',
+    age: '',
+    address: '',
+    phone: ''
+  }
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -113,11 +121,27 @@ export const rootReducer = (state = initialState, action) => {
           (item) => item.id !== action.payload,
         ),
       };
-    case 'CLEAR_CART':
+    case 'TOTAL_SUM':
+      let totalSum = state.cartProducts.reduce((acc, curr) => {
+        return acc + +curr.price
+      }, 0)
+      return {
+        ...state,
+        totalSum: totalSum
+      };
+    case 'SET_USER_DATA':
+      return {
+        ...state,
+        userData: {...state.userData, ...action.payload}
+      };
+    case 'CONSOLE_LOG':
+      console.log(state.userData, state.cartProducts, state.totalSum);
+      localStorage.removeItem('cartProducts');
       return {
         ...state,
         cartProducts: []
       };
+  
     default:
       return state;
   }

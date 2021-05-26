@@ -1,5 +1,6 @@
 .CartForm {
     width: 500px;
+    margin-bottom: 50px;
 }
 .CartForm label {
 display: block;
@@ -15,4 +16,16 @@ border: 2px solid transparent;
 }
 input:focus {
     border: 2px solid #e74c3c;
+}
+
+.CartForm button {
+    padding: 10px 15px;
+    background-color: #e74c3c;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
 }
