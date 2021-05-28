@@ -3,22 +3,24 @@
     margin-bottom: 50px;
 }
 .CartForm label {
-display: block;
-margin-bottom: 5px;
-color: #fff;
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    margin-top: 10px;
 }
 .CartForm input {
-padding: 10px 5px;
-margin-bottom: 10px;
-width: 500px;
-outline: none;
-border: 2px solid transparent;
+    padding: 10px 5px;
+    width: 500px;
+    outline: none;
+    border: 2px solid transparent;
 }
+
 input:focus {
-    border: 2px solid #e74c3c;
+    border: 2px solid rgba(0, 0, 0, 0.7);
 }
 
 .CartForm button {
+    margin-top: 10px;
     padding: 10px 15px;
     background-color: #e74c3c;
     cursor: pointer;
@@ -28,4 +30,9 @@ input:focus {
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+.Error {
+    color: red;
+    margin-top: 2px;
 }

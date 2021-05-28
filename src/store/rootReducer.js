@@ -29,7 +29,9 @@ const initialState = {
     age: '',
     address: '',
     phone: ''
-  }
+  },
+  isOpenModalFinishUserApplication: false,
+  dataModalFinishUserApplication: {}
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -132,7 +134,13 @@ export const rootReducer = (state = initialState, action) => {
     case 'SET_USER_DATA':
       return {
         ...state,
-        userData: {...state.userData, ...action.payload}
+        isOpenModalFinishUserApplication: true,
+        userData: {...action.payload}
+      };
+    case 'CLOSE_MODAL_FINISH_USER_APPLICATION':
+      return {
+        ...state,
+        isOpenModalFinishUserApplication: false
       };
     case 'CONSOLE_LOG':
       console.log(state.userData, state.cartProducts, state.totalSum);
@@ -141,7 +149,6 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         cartProducts: []
       };
-  
     default:
       return state;
   }

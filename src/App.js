@@ -46,6 +46,10 @@ const App = () => {
     (state) => state.productForModalDeleteWithCart,
   );
 
+  const isOpenModalFinishUserApplication = useSelector(state => state.isOpenModalFinishUserApplication)
+  const dataModalFinishUserApplication = useSelector(state => state.dataModalFinishUserApplication)
+  const userData = useSelector(state => state.userData)
+
   // Set and render products
   useEffect(() => {
     dispatch(fetchProducts());
@@ -84,6 +88,11 @@ const App = () => {
     dispatch(deleteProductFromCartAction(productForModalDeleteWithCart[0]));
   };
 
+
+  const handleCloseModalFinishUserApplication = () => {
+    dispatch({type: "CLOSE_MODAL_FINISH_USER_APPLICATION"})
+  }
+
   return (
     <div className={styles.App}>
       <Header />
@@ -116,6 +125,23 @@ const App = () => {
                 products={productForModalDeleteWithCart[0]}
                 text="Delete product"
                 onClick={handleDeleteProductWithCart}
+              />
+            </>
+          }
+        />
+      )}
+      {isOpenModalFinishUserApplication && (
+        <Modal
+          onClick={handleCloseModalFinishUserApplication}
+          header={`Thanks, ${userData.name}, for your application`}
+          closeButton={handleCloseModalFinishUserApplication}
+          dataForModalCard={dataModalFinishUserApplication}
+          actions={
+            <>
+              <Button
+                products={dataModalFinishUserApplication}
+                text="Ok"
+                onClick={handleCloseModalFinishUserApplication}
               />
             </>
           }
