@@ -1,6 +1,13 @@
 .CartForm {
-    width: 500px;
+    width: 300px;
     margin-bottom: 50px;
+    border: 1px dashed #fff;
+    align-self: flex-start;
+    padding: 20px;
+}
+.CartForm h3 {
+    color: #fff;
+    text-transform: uppercase;
 }
 .CartForm label {
     display: block;
@@ -10,7 +17,7 @@
 }
 .CartForm input {
     padding: 10px 5px;
-    width: 500px;
+    width: 95%;
     outline: none;
     border: 2px solid transparent;
 }
@@ -20,7 +27,7 @@ input:focus {
 }
 
 .CartForm button {
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 10px 15px;
     background-color: #e74c3c;
     cursor: pointer;

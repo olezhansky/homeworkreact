@@ -13,6 +13,27 @@
 .Main {
   max-width: 1160px;
   margin: 120px auto 0;
+  display: flex;
+  
+}
+.MainContentProducts {
+  max-width: 700px;
+  margin-right: 50px;
+  
+}
+
+.MainHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
+}
+.MainHeader {
+  color: #fff;
+  font-size: 20px;
 }
 .CartContent {
   background-color:#ccc;
@@ -27,13 +48,13 @@
   text-transform: uppercase;
 }
 .CartContentTitle {
-  margin-right: 290px;
+  margin-right: 270px;
 }
 .CartContentColor {
-  margin-right: 70px;
+  margin-right: 10px;
 }
 .CartContentPrice {
-  margin-right: 50px;
+  margin-right: 80px;
 }
 
 .CartForm {

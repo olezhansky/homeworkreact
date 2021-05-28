@@ -11,6 +11,11 @@ import {
   OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART,
   CART_FROM_LOCAL_STORAGE,
   FAVORITE_FROM_LOCAL_STORAGE,
+  TOTAL_SUM,
+  SET_USER_DATA,
+  SET_ORDER_DATA,
+  CLOSE_MODAL_FINISH_USER_APPLICATION,
+  CONSOLE_LOG,
 } from "./types";
 
 const initialState = {
@@ -23,6 +28,7 @@ const initialState = {
   productForModalDeleteWithCart: [],
   favoriteProducts: [],
   totalSum: 0,
+
   userData: {
     name: '',
     lastName: '',
@@ -31,7 +37,8 @@ const initialState = {
     phone: ''
   },
   isOpenModalFinishUserApplication: false,
-  dataModalFinishUserApplication: {}
+  dataModalFinishUserApplication: {},
+  orderData: []
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -123,7 +130,7 @@ export const rootReducer = (state = initialState, action) => {
           (item) => item.id !== action.payload,
         ),
       };
-    case 'TOTAL_SUM':
+    case TOTAL_SUM:
       let totalSum = state.cartProducts.reduce((acc, curr) => {
         return acc + +curr.price
       }, 0)
@@ -131,23 +138,29 @@ export const rootReducer = (state = initialState, action) => {
         ...state,
         totalSum: totalSum
       };
-    case 'SET_USER_DATA':
+    case SET_USER_DATA:
       return {
         ...state,
-        isOpenModalFinishUserApplication: true,
-        userData: {...action.payload}
+        userData: {...action.payload},
+        isOpenModalFinishUserApplication: true
       };
-    case 'CLOSE_MODAL_FINISH_USER_APPLICATION':
+    case SET_ORDER_DATA:
+      return {
+        ...state,
+        orderData: {...state.userData, ...state.cartProducts, ...action.payload}
+      };
+    case CLOSE_MODAL_FINISH_USER_APPLICATION:
       return {
         ...state,
         isOpenModalFinishUserApplication: false
       };
-    case 'CONSOLE_LOG':
-      console.log(state.userData, state.cartProducts, state.totalSum);
+    case CONSOLE_LOG:
+      console.log(state.orderData);
       localStorage.removeItem('cartProducts');
       return {
         ...state,
-        cartProducts: []
+        cartProducts: [],
+        orderData: []
       };
     default:
       return state;

@@ -5,7 +5,6 @@ import Backdrop from "../Backdrop/Backdrop";
 import PropTypes from "prop-types";
 
 const Modal = ({ header, dataForModalCard, closeButton, actions, onClick }) => {
-  console.log(dataForModalCard);
   return (
     <>
       <div className={styles.Modal}>

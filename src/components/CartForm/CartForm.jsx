@@ -1,22 +1,26 @@
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import styles from './CartForm.module.scss'
 import { Formik } from 'formik'
 import * as yup from 'yup'
+import { CONSOLE_LOG } from '../../store/types'
+import { setOrderDataAction, setUserDataAction } from '../../store/actions'
 
 const CartForm = () => {
 
-const dispatch = useDispatch()
+  const dispatch = useDispatch()
+
+  const totalSum = useSelector(state => state.totalSum)
 
   const handleOnSubmitForm = (values, { setSubmitting}) => {
-    dispatch({type: 'SET_USER_DATA', 
-      payload: { 
-        name: values.name,
-        lastName: values.lastName,
-        age: values.age,
-        address: values.address,
-        phone: values.phone
-    }})
-    dispatch({type: 'CONSOLE_LOG'})
+    dispatch((setUserDataAction({
+      name: values.name,
+      lastName: values.lastName,
+      age: values.age,
+      address: values.address,
+      phone: values.phone
+    })))
+    dispatch(setOrderDataAction({totalSum}))
+    dispatch({type: CONSOLE_LOG})
   }
 
   const validation = yup.object().shape({
@@ -43,6 +47,7 @@ const dispatch = useDispatch()
     >
       {({values, errors, touched, isSubmitting, handleChange, handleBlur, handleSubmit}) => (
         <form className={styles.CartForm} onSubmit={handleSubmit}>
+          <h3>Order summary</h3>
         <div>
           <label htmlFor="name">Name</label>
           <input name="name" id="name" type="text" onChange={handleChange} onBlur={handleBlur} value={values.name}/>

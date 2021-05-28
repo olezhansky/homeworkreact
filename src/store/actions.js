@@ -11,7 +11,10 @@ import {
   OPEN_MODAL_FOR_ADD_FAVORITE_PRODUCT_TO_CART,
   OPEN_MODAL_FOR_ADD_PRODUCT_TO_CART,
   SET_PRODUCTS,
-  OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART
+  OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART,
+  SET_ORDER_DATA,
+  SET_USER_DATA,
+  TOTAL_SUM
 } from "./types";
 
 export const fetchProducts = () => dispatch => {
@@ -91,6 +94,24 @@ export const openModalForDeleteProductFromCartAction = product => {
   return {
     type: OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART,
     payload: product,
+  };
+};
+
+export const totalSumAction = () => {
+  return {type: TOTAL_SUM}
+};
+export const setUserDataAction = objectUserData => {
+  return {
+    type: SET_USER_DATA,
+    payload: objectUserData,
+  };
+};
+
+
+export const setOrderDataAction = totalSum => {
+  return {
+    type: SET_ORDER_DATA,
+    payload: totalSum,
   };
 };
 
