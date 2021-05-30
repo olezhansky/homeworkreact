@@ -5,6 +5,14 @@ import Backdrop from "../Backdrop/Backdrop";
 import PropTypes from "prop-types";
 
 const Modal = ({ header, dataForModalCard, closeButton, actions, onClick }) => {
+  let styleColor = "";
+  if (dataForModalCard.color === "Red") {
+    styleColor = styles.Red;
+  } else if (dataForModalCard.color === "Blue") {
+    styleColor = styles.Blue;
+  } else {
+    styleColor = styles.Black;
+  }
   return (
     <>
       <div className={styles.Modal}>
@@ -16,7 +24,6 @@ const Modal = ({ header, dataForModalCard, closeButton, actions, onClick }) => {
                 <img src={closeImg} alt={"closeImg"} />
               </button>
             }
-           
           </div>
           <div className={styles.ModalMain}>
             {Object.keys(dataForModalCard).length !== 0 &&
@@ -27,7 +34,7 @@ const Modal = ({ header, dataForModalCard, closeButton, actions, onClick }) => {
                    <ul className={styles.ModalCardData}>
                      <li>
                        <span>Color:</span>
-                       {dataForModalCard.color}
+                       <span className={styleColor}>{dataForModalCard.color}</span>
                      </li>
                      <li>
                        <span>Code:</span>
@@ -41,7 +48,6 @@ const Modal = ({ header, dataForModalCard, closeButton, actions, onClick }) => {
                  </div>
                  </>
             }
-         
           </div>
           <div className={styles.Button}>{actions}</div>
         </div>

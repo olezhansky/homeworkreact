@@ -8,14 +8,11 @@ import CartForm from "../../components/CartForm/CartForm";
 import { totalSumAction } from "../../store/actions";
 
 const Cart = ({onClick}) => {
-
   const state = useSelector(state => state)
   const dispatch = useDispatch()
-  
   useEffect(() => {
    dispatch(totalSumAction())
   }, [state.cartProducts, dispatch])
-
   return (
     <>
       {!state.cartProducts.length && (
@@ -44,7 +41,7 @@ const Cart = ({onClick}) => {
                 );
               })}
             </ul>
-            <div className={styles.Total}>Total cost: <span className={styles.TotalNumber}>{state.totalSum}</span> $</div>
+            <div className={styles.Total}>Total cost: <span className={styles.TotalSum}>{state.totalSum}</span> $</div>
           </div>
           <CartForm />
         </div>

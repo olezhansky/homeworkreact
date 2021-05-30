@@ -6,11 +6,8 @@ import { CONSOLE_LOG } from '../../store/types'
 import { setOrderDataAction, setUserDataAction } from '../../store/actions'
 
 const CartForm = () => {
-
   const dispatch = useDispatch()
-
   const totalSum = useSelector(state => state.totalSum)
-
   const handleOnSubmitForm = (values, { setSubmitting}) => {
     dispatch((setUserDataAction({
       name: values.name,
@@ -22,7 +19,6 @@ const CartForm = () => {
     dispatch(setOrderDataAction({totalSum}))
     dispatch({type: CONSOLE_LOG})
   }
-
   const validation = yup.object().shape({
     name: yup.string().typeError('Should be string').required('Required'),
     lastName: yup.string().typeError('Should be string').required('Required'),
@@ -31,7 +27,6 @@ const CartForm = () => {
     phone: yup.number().typeError('Should be number').required('Required')
 
   })
-
   return (
     <Formik
       initialValues={{
@@ -53,7 +48,6 @@ const CartForm = () => {
           <input name="name" id="name" type="text" onChange={handleChange} onBlur={handleBlur} value={values.name}/>
           {touched.name && errors.name && <p className={styles.Error}>{errors.name }</p>}
         </div>
-        
         <div>
           <label htmlFor="lastName">Last name</label>
           <input name="lastName" id="lastName" type="text" onChange={handleChange} onBlur={handleBlur} value={values.lastName}/>
