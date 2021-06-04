@@ -3,6 +3,7 @@ import styles from "./ProductItem.module.scss";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addProductToFavoriteAction, openModalForAddProductToCartAction } from "../../../store/actions";
+import Button from "../../../components/UI/Button/Button";
 
 const ProductItem = ({ product, favoriteProducts }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -62,10 +63,10 @@ const ProductItem = ({ product, favoriteProducts }) => {
         <div className={styles.ProductItemCode}>Code: {product.code}</div>
         <div className={styles.ProductItemBottom}>
           <div className={styles.ProductItemPrice}>Price: {product.price}$</div>
-          <button onClick={handleOpenModal} className={styles.Button}>
+          <Button onClick={handleOpenModal} >
             Add to cart &nbsp;
             <i className="fas fa-shopping-cart"></i>
-          </button>
+          </Button>
         </div>
       </div>
     </li>

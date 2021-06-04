@@ -2,15 +2,10 @@ import React from "react";
 import styles from "./Button.module.scss";
 import PropTypes from "prop-types";
 
-const Button = ({ products, text, onClick, backgroundColor }) => {
+const Button = ({children, onClick }) => {
   return (
-    <button
-      products={products}
-      style={{ backgroundColor }}
-      className={styles.Button}
-      onClick={() => onClick(products.id)}
-    >
-      {text}
+    <button className={styles.Button} onClick={onClick}>
+      {children}
     </button>
   );
 };
@@ -23,3 +18,4 @@ Button.propTypes = {
 };
 
 export default Button;
+

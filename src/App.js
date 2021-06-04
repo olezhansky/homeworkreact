@@ -104,11 +104,11 @@ const App = () => {
           dataForModalCard={dataForModalAddProductToCart[0]}
           actions={
             <>
-              <Button
-                products={dataForModalAddProductToCart[0]}
-                text="Add to cart"
-                onClick={handleAddProductToCart}
-              />
+              <Button onClick={handleAddProductToCart}>
+                Add to cart
+                &nbsp;
+                <i className="fas fa-shopping-cart"></i>
+              </Button>
             </>
           }
         />
@@ -121,11 +121,9 @@ const App = () => {
           dataForModalCard={productForModalDeleteWithCart[0]}
           actions={
             <>
-              <Button
-                products={productForModalDeleteWithCart[0]}
-                text="Delete product"
-                onClick={handleDeleteProductWithCart}
-              />
+              <Button onClick={handleDeleteProductWithCart}>
+                Delete product
+              </Button>
             </>
           }
         />
@@ -138,11 +136,11 @@ const App = () => {
           dataForModalCard={dataModalFinishUserApplication}
           actions={
             <>
-              <Button
-                products={dataModalFinishUserApplication}
-                text="Ok"
-                onClick={handleCloseModalFinishUserApplication}
-              />
+              <Button onClick={handleCloseModalFinishUserApplication}>
+                Ok
+                &nbsp;
+                <i class="fas fa-smile-wink"/>
+              </Button>
             </>
           }
         />

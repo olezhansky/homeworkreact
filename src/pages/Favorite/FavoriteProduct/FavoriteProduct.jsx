@@ -6,6 +6,7 @@ import {
   deleteProductFromFavoriteAction,
   openModalForAddFaforiteProductToCartAction,
 } from "../../../store/actions";
+import Button from "../../../components/UI/Button/Button";
 
 const FavoriteProduct = ({ product }) => {
   const dispatch = useDispatch();
@@ -49,10 +50,10 @@ const FavoriteProduct = ({ product }) => {
           <div className={styles.FavoriteItemPrice}>
             Price: {product.price}$
           </div>
-          <button className={styles.Button} onClick={handleOpenModal}>
+          <Button onClick={handleOpenModal}>
             Add to cart &nbsp;
             <i className="fas fa-shopping-cart"></i>
-          </button>
+          </Button>
         </div>
       </div>
     </li>

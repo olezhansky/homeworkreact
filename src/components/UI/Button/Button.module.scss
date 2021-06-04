@@ -1,18 +1,15 @@
 .Button {
-  padding: 10px 15px;
-  min-width: 100px;
+  padding: 10px 10px;
   cursor: pointer;
   outline: none;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.7);
   border: none;
   border-radius: 5px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   color: #fff;
-  letter-spacing: 1px;
   transition: all 0.3s;
-  margin: 0 10px;
 }
 
 .Button:hover {
