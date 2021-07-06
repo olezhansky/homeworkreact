@@ -24,7 +24,7 @@ const CartForm = () => {
     lastName: yup.string().typeError('Should be string').required('Required'),
     age: yup.number().typeError('Should be number').required('Required'),
     address: yup.string().typeError('Should be number').required('Required'),
-    phone: yup.number().typeError('Should be number').required('Required')
+    phone: yup.number().typeError('')
 
   })
   return (
