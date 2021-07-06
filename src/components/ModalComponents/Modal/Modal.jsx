@@ -5,6 +5,10 @@ import Backdrop from "../Backdrop/Backdrop";
 import PropTypes from "prop-types";
 
 const Modal = ({ header, dataForModalCard, closeButton, actions, onClick }) => {
+  console.log(dataForModalCard);
+
+  if (!dataForModalCard) return null 
+
   let styleColor = "";
   if (dataForModalCard.color === "Red") {
     styleColor = styles.Red;
@@ -20,33 +24,33 @@ const Modal = ({ header, dataForModalCard, closeButton, actions, onClick }) => {
           <div className={styles.ModalTop}>
             <h1 className={styles.Title}>{header}</h1>
             {Object.keys(dataForModalCard).length !== 0 &&
-              <button className={styles.Close} onClick={closeButton}>
+              <div className={styles.Close} onClick={closeButton}>
                 <img src={closeImg} alt={"closeImg"} />
-              </button>
+              </div>
             }
           </div>
           <div className={styles.ModalMain}>
             {Object.keys(dataForModalCard).length !== 0 &&
               <>
-                 <img src={"db/" + dataForModalCard.img} alt="" />
-                 <div className={styles.ModalMainContent}>
-                   <p className={styles.ModalMainText}>{dataForModalCard.name}</p>
-                   <ul className={styles.ModalCardData}>
-                     <li>
-                       <span>Color:</span>
-                       <span className={styleColor}>{dataForModalCard.color}</span>
-                     </li>
-                     <li>
-                       <span>Code:</span>
-                       {dataForModalCard.code}
-                     </li>
-                     <li>
-                       <span>Price:</span>
-                       {dataForModalCard.price}$
-                     </li>
-                   </ul>
-                 </div>
-                 </>
+                <img src={"db/" + dataForModalCard.img} alt="" />
+                <div className={styles.ModalMainContent}>
+                  <p className={styles.ModalMainText}>{dataForModalCard.name}</p>
+                  <ul className={styles.ModalCardData}>
+                    <li>
+                      <span>Color:</span>
+                      <span className={styleColor}>{dataForModalCard.color}</span>
+                    </li>
+                    <li>
+                      <span>Code:</span>
+                      {dataForModalCard.code}
+                    </li>
+                    <li>
+                      <span>Price:</span>
+                      {dataForModalCard.price}$
+                    </li>
+                  </ul>
+                </div>
+              </>
             }
           </div>
           <div className={styles.Button}>{actions}</div>
