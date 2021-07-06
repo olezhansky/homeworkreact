@@ -10,7 +10,7 @@ const Favorite = () => {
   return (
     <>
       {!favoriteProducts.length && (
-        <h2 className={styles.Title}>Favorite empty!</h2>
+        <h2 className={styles.Title}>Favorites empty!</h2>
       )}
       <ul className={styles.Favorite}>
         {favoriteProducts.map(product => {
