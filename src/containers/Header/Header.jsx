@@ -6,8 +6,8 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
 
-  const favoriteProducts = useSelector(state => state.favoriteProducts)
-  const cartProducts = useSelector(state => state.cartProducts)
+  const favoriteProducts = useSelector(state => state.favorites.favoriteProducts)
+  const cartProducts = useSelector(state => state.cart.cartProducts)
 
   return (
     <div className={styles.Header}>

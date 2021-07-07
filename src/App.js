@@ -24,26 +24,26 @@ const App = () => {
   const dispatch = useDispatch();
 
   // Loading products from db
-  const isLoadingProducts = useSelector(state => state.isLoadingProducts);
+  const isLoadingProducts = useSelector(state => state.products.isLoadingProducts);
 
   // Open modal window for add product to cart
   const isOpenModalForAddToCart = useSelector(
-    (state) => state.isOpenModalForAddToCart,
+    (state) => state.products.isOpenModalForAddToCart,
   );
 
   // Data for modal window that add product to cart
   const dataForModalAddProductToCart = useSelector(
-    (state) => state.dataForModalAddProductToCart,
+    (state) => state.products.dataForModalAddProductToCart,
   );
 
   // Is open modal window for delete product with cart
   const isOpenModalForDeleteProductWithCart = useSelector(
-    (state) => state.isOpenModalForDeleteProductWithCart,
+    (state) => state.cart.isOpenModalForDeleteProductWithCart,
   );
 
   // Data for delete product with cart
   const productForModalDeleteWithCart = useSelector(
-    (state) => state.productForModalDeleteWithCart,
+    (state) => state.cart.productForModalDeleteWithCart,
   );
 
   const isOpenModalFinishUserApplication = useSelector(state => state.isOpenModalFinishUserApplication)
@@ -88,7 +88,6 @@ const App = () => {
     dispatch(deleteProductFromCartAction(productForModalDeleteWithCart[0]));
   };
 
-
   const handleCloseModalFinishUserApplication = () => {
     dispatch({type: "CLOSE_MODAL_FINISH_USER_APPLICATION"})
   }
@@ -113,6 +112,7 @@ const App = () => {
           }
         />
       )}
+
       {isOpenModalForDeleteProductWithCart && (
         <Modal
           onClick={handleCloseModalForDeleteWithCart}

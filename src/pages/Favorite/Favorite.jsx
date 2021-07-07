@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 
 const Favorite = () => {
-  const favoriteProducts = useSelector((state) => state.favoriteProducts);
+  const favoriteProducts = useSelector((state) => state.favorites.favoriteProducts);
 
   return (
     <>
