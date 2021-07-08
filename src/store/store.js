@@ -29,10 +29,6 @@ const localStorageMiddleware =
       console.log(getState());
       localStorage.setItem("cartProducts", JSON.stringify(cart.cartProducts));
     }
-    if (action.type === ADD_PRODUCT_TO_CART) {
-      const { cart } = getState();
-      localStorage.setItem("totalSum", JSON.stringify(cart.totalSum));
-    }
     if (
       action.type === ADD_PRODUCT_TO_FAVORITE ||
       action.type === DELETE_PRODUCT_FROM_FAVORITE

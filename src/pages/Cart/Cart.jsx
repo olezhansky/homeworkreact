@@ -12,7 +12,7 @@ const Cart = ({ onClick }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(totalSumAction())
-  }, [state.cartProducts, dispatch])
+  }, [state.cart.cartProducts, dispatch])
   return (
     <>
       {!state.cart.cartProducts.length && (

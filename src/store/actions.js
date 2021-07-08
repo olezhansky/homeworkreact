@@ -90,12 +90,6 @@ export const cartFromLocalStorageAction = (cartFromLocalStorage) => {
     payload: JSON.parse(cartFromLocalStorage),
   };
 };
-export const totalSumFromLocalStorageAction = (totalSumFromLocalStorage) => {
-  return {
-    type: TOTAL_SUM_FROM_LOCAL_STORAGE,
-    payload: JSON.parse(totalSumFromLocalStorage),
-  };
-};
 
 export const openModalForDeleteProductFromCartAction = (product) => {
   return {

@@ -16,7 +16,6 @@ import {
   closeModalForDeleteProductFromCartAction,
   favoriteFromLocalStorageAction,
   cartFromLocalStorageAction,
-  totalSumFromLocalStorageAction,
 } from "./store/actions";
 import Home from "./pages/Home/Home";
 
@@ -66,15 +65,11 @@ const App = () => {
   useEffect(() => {
     const favoriteFromLocalStorage = localStorage.getItem("favoriteProducts");
     const cartFromLocalStorage = localStorage.getItem("cartProducts");
-    const totalSumFromLocalStorage = localStorage.getItem("totalSum");
     if (favoriteFromLocalStorage) {
       dispatch(favoriteFromLocalStorageAction(favoriteFromLocalStorage));
     }
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
-    }
-    if (totalSumFromLocalStorage) {
-      dispatch(totalSumFromLocalStorageAction(totalSumFromLocalStorage));
     }
   }, [dispatch]);
 
