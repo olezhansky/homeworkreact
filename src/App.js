@@ -16,6 +16,7 @@ import {
   closeModalForDeleteProductFromCartAction,
   favoriteFromLocalStorageAction,
   cartFromLocalStorageAction,
+  totalSumFromLocalStorageAction,
 } from "./store/actions";
 import Home from "./pages/Home/Home";
 
@@ -24,31 +25,37 @@ const App = () => {
   const dispatch = useDispatch();
 
   // Loading products from db
-  const isLoadingProducts = useSelector(state => state.products.isLoadingProducts);
+  const isLoadingProducts = useSelector(
+    (state) => state.products.isLoadingProducts
+  );
 
   // Open modal window for add product to cart
   const isOpenModalForAddToCart = useSelector(
-    (state) => state.products.isOpenModalForAddToCart,
+    (state) => state.products.isOpenModalForAddToCart
   );
 
   // Data for modal window that add product to cart
   const dataForModalAddProductToCart = useSelector(
-    (state) => state.products.dataForModalAddProductToCart,
+    (state) => state.products.dataForModalAddProductToCart
   );
 
   // Is open modal window for delete product with cart
   const isOpenModalForDeleteProductWithCart = useSelector(
-    (state) => state.cart.isOpenModalForDeleteProductWithCart,
+    (state) => state.cart.isOpenModalForDeleteProductWithCart
   );
 
   // Data for delete product with cart
   const productForModalDeleteWithCart = useSelector(
-    (state) => state.cart.productForModalDeleteWithCart,
+    (state) => state.cart.productForModalDeleteWithCart
   );
 
-  const isOpenModalFinishUserApplication = useSelector(state => state.isOpenModalFinishUserApplication)
-  const dataModalFinishUserApplication = useSelector(state => state.dataModalFinishUserApplication)
-  const userData = useSelector(state => state.userData)
+  const isOpenModalFinishUserApplication = useSelector(
+    (state) => state.cart.isOpenModalFinishUserApplication
+  );
+  const dataModalFinishUserApplication = useSelector(
+    (state) => state.cart.dataModalFinishUserApplication
+  );
+  const userData = useSelector((state) => state.cart.userData);
 
   // Set and render products
   useEffect(() => {
@@ -59,11 +66,15 @@ const App = () => {
   useEffect(() => {
     const favoriteFromLocalStorage = localStorage.getItem("favoriteProducts");
     const cartFromLocalStorage = localStorage.getItem("cartProducts");
+    const totalSumFromLocalStorage = localStorage.getItem("totalSum");
     if (favoriteFromLocalStorage) {
       dispatch(favoriteFromLocalStorageAction(favoriteFromLocalStorage));
     }
     if (cartFromLocalStorage) {
       dispatch(cartFromLocalStorageAction(cartFromLocalStorage));
+    }
+    if (totalSumFromLocalStorage) {
+      dispatch(totalSumFromLocalStorageAction(totalSumFromLocalStorage));
     }
   }, [dispatch]);
 
@@ -89,8 +100,8 @@ const App = () => {
   };
 
   const handleCloseModalFinishUserApplication = () => {
-    dispatch({type: "CLOSE_MODAL_FINISH_USER_APPLICATION"})
-  }
+    dispatch({ type: "CLOSE_MODAL_FINISH_USER_APPLICATION" });
+  };
 
   return (
     <div className={styles.App}>
@@ -104,8 +115,7 @@ const App = () => {
           actions={
             <>
               <Button onClick={handleAddProductToCart}>
-                Add to cart
-                &nbsp;
+                Add to cart &nbsp;
                 <i className="fas fa-shopping-cart"></i>
               </Button>
             </>
@@ -137,9 +147,8 @@ const App = () => {
           actions={
             <>
               <Button onClick={handleCloseModalFinishUserApplication}>
-                Ok
-                &nbsp;
-                <i class="fas fa-smile-wink"/>
+                Ok &nbsp;
+                <i class="fas fa-smile-wink" />
               </Button>
             </>
           }
@@ -149,9 +158,7 @@ const App = () => {
         <Route path="/home">
           <Home />
         </Route>
-        <Route path="/products">
-          {!isLoadingProducts && <Products />}
-        </Route>
+        <Route path="/products">{!isLoadingProducts && <Products />}</Route>
         <Route path="/favorites">
           <Favorite />
         </Route>

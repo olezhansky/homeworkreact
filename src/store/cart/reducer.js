@@ -1,4 +1,16 @@
-import { ADD_PRODUCT_TO_CART, CART_FROM_LOCAL_STORAGE, CLOSE_MODAL_FINISH_USER_APPLICATION, CLOSE_MODAL_FOR_ADD_TO_CART, CLOSE_MODAL_FOR_DELETE_PRODUCT_FROM_CART, CONSOLE_LOG, DELETE_PRODUCT_FROM_CART, OPEN_MODAL_FOR_ADD_PRODUCT_TO_CART, OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART, SET_ORDER_DATA, SET_PRODUCTS, SET_USER_DATA, TOTAL_SUM } from "../types";
+import {
+  ADD_PRODUCT_TO_CART,
+  CART_FROM_LOCAL_STORAGE,
+  CLOSE_MODAL_FINISH_USER_APPLICATION,
+  CLOSE_MODAL_FOR_DELETE_PRODUCT_FROM_CART,
+  CONSOLE_LOG,
+  DELETE_PRODUCT_FROM_CART,
+  OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART,
+  SET_ORDER_DATA,
+  SET_USER_DATA,
+  TOTAL_SUM,
+  TOTAL_SUM_FROM_LOCAL_STORAGE,
+} from "../types";
 
 const initialState = {
   cartProducts: [],
@@ -6,15 +18,15 @@ const initialState = {
   productForModalDeleteWithCart: [],
   totalSum: 0,
   userData: {
-    name: '',
-    lastName: '',
-    age: '',
-    address: '',
-    phone: ''
+    name: "",
+    lastName: "",
+    age: "",
+    address: "",
+    phone: "",
   },
   isOpenModalFinishUserApplication: false,
   dataModalFinishUserApplication: {},
-  orderData: []
+  orderData: [],
 };
 
 export const cartReducer = (state = initialState, action) => {
@@ -33,7 +45,7 @@ export const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartProducts: state.cartProducts.filter(
-          (item) => item.id !== action.payload.id,
+          (item) => item.id !== action.payload.id
         ),
         isOpenModalForDeleteProductWithCart: false,
       };
@@ -42,7 +54,7 @@ export const cartReducer = (state = initialState, action) => {
         ...state,
         isOpenModalForDeleteProductWithCart: true,
         productForModalDeleteWithCart: state.cartProducts.filter(
-          (item) => item.id === action.payload.id,
+          (item) => item.id === action.payload.id
         ),
       };
     case CART_FROM_LOCAL_STORAGE:
@@ -50,38 +62,47 @@ export const cartReducer = (state = initialState, action) => {
         ...state,
         cartProducts: action.payload,
       };
-    case TOTAL_SUM:
-      let totalSum = state.cartProducts.reduce((acc, curr) => {
-        return acc + +curr.price
-      }, 0)
+    case TOTAL_SUM_FROM_LOCAL_STORAGE:
       return {
         ...state,
-        totalSum: totalSum
+        totalSum: action.payload,
+      };
+    case TOTAL_SUM:
+      let totalSum = state.cartProducts.reduce((acc, curr) => {
+        return acc + +curr.price;
+      }, 0);
+      return {
+        ...state,
+        totalSum: totalSum,
       };
     case SET_USER_DATA:
-        return {
-          ...state,
-          userData: {...action.payload},
-          isOpenModalFinishUserApplication: true
-        };
+      return {
+        ...state,
+        userData: { ...action.payload },
+        isOpenModalFinishUserApplication: true,
+      };
     case SET_ORDER_DATA:
-        return {
-          ...state,
-          orderData: {...state.userData, ...state.cartProducts, ...action.payload}
-        };
+      return {
+        ...state,
+        orderData: {
+          ...state.userData,
+          ...state.cartProducts,
+          ...action.payload,
+        },
+      };
     case CLOSE_MODAL_FINISH_USER_APPLICATION:
-        return {
-          ...state,
-          isOpenModalFinishUserApplication: false
-        };
+      return {
+        ...state,
+        isOpenModalFinishUserApplication: false,
+      };
     case CONSOLE_LOG:
-        console.log(state.orderData);
-        localStorage.removeItem('cartProducts');
-        return {
-          ...state,
-          cartProducts: [],
-          orderData: []
-        };
+      console.log(state.orderData);
+      localStorage.removeItem("cartProducts");
+      return {
+        ...state,
+        cartProducts: [],
+        orderData: [],
+      };
     default:
       return state;
   }

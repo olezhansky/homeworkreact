@@ -14,11 +14,12 @@ import {
   OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART,
   SET_ORDER_DATA,
   SET_USER_DATA,
-  TOTAL_SUM
+  TOTAL_SUM,
+  TOTAL_SUM_FROM_LOCAL_STORAGE,
 } from "./types";
 
-export const fetchProducts = () => dispatch => {
-  getProducts().then(products => {
+export const fetchProducts = () => (dispatch) => {
+  getProducts().then((products) => {
     dispatch({ type: SET_PRODUCTS, payload: { products } });
   });
 };
@@ -30,7 +31,7 @@ export const openModalForAddProductToCartAction = (productId) => {
   };
 };
 
-export const addProductToFavoriteAction = product => {
+export const addProductToFavoriteAction = (product) => {
   return {
     type: ADD_PRODUCT_TO_FAVORITE,
     payload: product,
@@ -44,7 +45,7 @@ export const openModalForAddFaforiteProductToCartAction = (productId) => {
   };
 };
 
-export const deleteProductFromFavoriteAction = productId => {
+export const deleteProductFromFavoriteAction = (productId) => {
   return {
     type: DELETE_PRODUCT_FROM_FAVORITE,
     payload: productId,
@@ -76,21 +77,27 @@ export const closeModalForDeleteProductFromCartAction = () => {
   };
 };
 
-export const favoriteFromLocalStorageAction = favoriteFromLocalStorage => {
+export const favoriteFromLocalStorageAction = (favoriteFromLocalStorage) => {
   return {
     type: FAVORITE_FROM_LOCAL_STORAGE,
     payload: JSON.parse(favoriteFromLocalStorage),
   };
 };
 
-export const cartFromLocalStorageAction = cartFromLocalStorage => {
+export const cartFromLocalStorageAction = (cartFromLocalStorage) => {
   return {
     type: CART_FROM_LOCAL_STORAGE,
     payload: JSON.parse(cartFromLocalStorage),
   };
 };
+export const totalSumFromLocalStorageAction = (totalSumFromLocalStorage) => {
+  return {
+    type: TOTAL_SUM_FROM_LOCAL_STORAGE,
+    payload: JSON.parse(totalSumFromLocalStorage),
+  };
+};
 
-export const openModalForDeleteProductFromCartAction = product => {
+export const openModalForDeleteProductFromCartAction = (product) => {
   return {
     type: OPEN_MODAL_FOR_DELETE_PRODUCT_FROM_CART,
     payload: product,
@@ -98,21 +105,18 @@ export const openModalForDeleteProductFromCartAction = product => {
 };
 
 export const totalSumAction = () => {
-  return {type: TOTAL_SUM}
+  return { type: TOTAL_SUM };
 };
-export const setUserDataAction = objectUserData => {
+export const setUserDataAction = (objectUserData) => {
   return {
     type: SET_USER_DATA,
     payload: objectUserData,
   };
 };
 
-
-export const setOrderDataAction = totalSum => {
+export const setOrderDataAction = (totalSum) => {
   return {
     type: SET_ORDER_DATA,
     payload: totalSum,
   };
 };
-
-
