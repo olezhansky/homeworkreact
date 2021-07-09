@@ -30,7 +30,7 @@ const App = () => {
 
   // Open modal window for add product to cart
   const isOpenModalForAddToCart = useSelector(
-    (state) => state.products.isOpenModalForAddToCart
+    (state) => state.openCloseModal.isOpenModalForAddToCart
   );
 
   // Data for modal window that add product to cart
@@ -117,7 +117,6 @@ const App = () => {
           }
         />
       )}
-
       {isOpenModalForDeleteProductWithCart && (
         <Modal
           onClick={handleCloseModalForDeleteWithCart}

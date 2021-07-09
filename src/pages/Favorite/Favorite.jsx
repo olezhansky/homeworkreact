@@ -3,6 +3,7 @@ import styles from "./Favorite.module.scss";
 import FavoriteProduct from "./FavoriteProduct/FavoriteProduct";
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
+import Modal from '../../components/ModalComponents/Modal/Modal'
 
 const Favorite = () => {
   const favoriteProducts = useSelector((state) => state.favorites.favoriteProducts);

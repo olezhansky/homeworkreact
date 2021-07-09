@@ -6,11 +6,11 @@ import {
   ADD_PRODUCT_TO_FAVORITE,
   DELETE_PRODUCT_FROM_CART,
   DELETE_PRODUCT_FROM_FAVORITE,
-  TOTAL_SUM,
 } from "./types";
 import { productsReducer } from "./products/reducer";
 import { cartReducer } from "./cart/reducer";
 import { favoritesReducer } from "./favorites/reducer";
+import { openCloseModalReducer } from "./openCloseModal/reducer";
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
   ? window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -46,6 +46,7 @@ export const rootReducer = combineReducers({
   products: productsReducer,
   cart: cartReducer,
   favorites: favoritesReducer,
+  openCloseModal: openCloseModalReducer,
 });
 const store = createStore(
   rootReducer,
