@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/react-homeworks/static/css/main.c87a609c.chunk.css",
-    "main.js": "/react-homeworks/static/js/main.fb38260d.chunk.js",
-    "main.js.map": "/react-homeworks/static/js/main.fb38260d.chunk.js.map",
-    "runtime-main.js": "/react-homeworks/static/js/runtime-main.584966ae.js",
-    "runtime-main.js.map": "/react-homeworks/static/js/runtime-main.584966ae.js.map",
-    "static/js/2.e9684d97.chunk.js": "/react-homeworks/static/js/2.e9684d97.chunk.js",
-    "static/js/2.e9684d97.chunk.js.map": "/react-homeworks/static/js/2.e9684d97.chunk.js.map",
-    "static/js/3.4a22e9dd.chunk.js": "/react-homeworks/static/js/3.4a22e9dd.chunk.js",
-    "static/js/3.4a22e9dd.chunk.js.map": "/react-homeworks/static/js/3.4a22e9dd.chunk.js.map",
-    "index.html": "/react-homeworks/index.html",
-    "static/css/main.c87a609c.chunk.css.map": "/react-homeworks/static/css/main.c87a609c.chunk.css.map",
-    "static/js/2.e9684d97.chunk.js.LICENSE.txt": "/react-homeworks/static/js/2.e9684d97.chunk.js.LICENSE.txt",
-    "static/media/Home.module.scss": "/react-homeworks/static/media/home.3734c157.jpg"
+    "main.css": "/homeworks-react/static/css/main.dd591918.chunk.css",
+    "main.js": "/homeworks-react/static/js/main.fb38260d.chunk.js",
+    "main.js.map": "/homeworks-react/static/js/main.fb38260d.chunk.js.map",
+    "runtime-main.js": "/homeworks-react/static/js/runtime-main.e9759447.js",
+    "runtime-main.js.map": "/homeworks-react/static/js/runtime-main.e9759447.js.map",
+    "static/js/2.e9684d97.chunk.js": "/homeworks-react/static/js/2.e9684d97.chunk.js",
+    "static/js/2.e9684d97.chunk.js.map": "/homeworks-react/static/js/2.e9684d97.chunk.js.map",
+    "static/js/3.4a22e9dd.chunk.js": "/homeworks-react/static/js/3.4a22e9dd.chunk.js",
+    "static/js/3.4a22e9dd.chunk.js.map": "/homeworks-react/static/js/3.4a22e9dd.chunk.js.map",
+    "index.html": "/homeworks-react/index.html",
+    "static/css/main.dd591918.chunk.css.map": "/homeworks-react/static/css/main.dd591918.chunk.css.map",
+    "static/js/2.e9684d97.chunk.js.LICENSE.txt": "/homeworks-react/static/js/2.e9684d97.chunk.js.LICENSE.txt",
+    "static/media/Home.module.scss": "/homeworks-react/static/media/home.3734c157.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.584966ae.js",
+    "static/js/runtime-main.e9759447.js",
     "static/js/2.e9684d97.chunk.js",
-    "static/css/main.c87a609c.chunk.css",
+    "static/css/main.dd591918.chunk.css",
     "static/js/main.fb38260d.chunk.js"
   ]
 }
