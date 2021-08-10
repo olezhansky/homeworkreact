@@ -14,7 +14,7 @@ const Cart = ({onClick}) => {
    dispatch(totalSumAction())
   }, [state.cartProducts, dispatch])
   return (
-    <>
+    <div className={styles.CartWrapper}>
       {!state.cartProducts.length && (
         <div className={styles.Header}>
           <p className={styles.Text}>Cart empty!</p>
@@ -46,7 +46,7 @@ const Cart = ({onClick}) => {
           <CartForm />
         </div>
       }
-    </>
+    </div>
   );
 };
 

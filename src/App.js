@@ -18,37 +18,42 @@ import {
   cartFromLocalStorageAction,
 } from "./store/actions";
 import Home from "./pages/Home/Home";
+import Footer from "./containers/Footer/Footer";
 
 const App = () => {
   // Hook useDispatch
   const dispatch = useDispatch();
 
   // Loading products from db
-  const isLoadingProducts = useSelector(state => state.isLoadingProducts);
+  const isLoadingProducts = useSelector((state) => state.isLoadingProducts);
 
   // Open modal window for add product to cart
   const isOpenModalForAddToCart = useSelector(
-    (state) => state.isOpenModalForAddToCart,
+    (state) => state.isOpenModalForAddToCart
   );
 
   // Data for modal window that add product to cart
   const dataForModalAddProductToCart = useSelector(
-    (state) => state.dataForModalAddProductToCart,
+    (state) => state.dataForModalAddProductToCart
   );
 
   // Is open modal window for delete product with cart
   const isOpenModalForDeleteProductWithCart = useSelector(
-    (state) => state.isOpenModalForDeleteProductWithCart,
+    (state) => state.isOpenModalForDeleteProductWithCart
   );
 
   // Data for delete product with cart
   const productForModalDeleteWithCart = useSelector(
-    (state) => state.productForModalDeleteWithCart,
+    (state) => state.productForModalDeleteWithCart
   );
 
-  const isOpenModalFinishUserApplication = useSelector(state => state.isOpenModalFinishUserApplication)
-  const dataModalFinishUserApplication = useSelector(state => state.dataModalFinishUserApplication)
-  const userData = useSelector(state => state.userData)
+  const isOpenModalFinishUserApplication = useSelector(
+    (state) => state.isOpenModalFinishUserApplication
+  );
+  const dataModalFinishUserApplication = useSelector(
+    (state) => state.dataModalFinishUserApplication
+  );
+  const userData = useSelector((state) => state.userData);
 
   // Set and render products
   useEffect(() => {
@@ -88,10 +93,9 @@ const App = () => {
     dispatch(deleteProductFromCartAction(productForModalDeleteWithCart[0]));
   };
 
-
   const handleCloseModalFinishUserApplication = () => {
-    dispatch({type: "CLOSE_MODAL_FINISH_USER_APPLICATION"})
-  }
+    dispatch({ type: "CLOSE_MODAL_FINISH_USER_APPLICATION" });
+  };
 
   return (
     <div className={styles.App}>
@@ -105,14 +109,14 @@ const App = () => {
           actions={
             <>
               <Button onClick={handleAddProductToCart}>
-                Add to cart
-                &nbsp;
+                Add to cart &nbsp;
                 <i className="fas fa-shopping-cart"></i>
               </Button>
             </>
           }
         />
       )}
+
       {isOpenModalForDeleteProductWithCart && (
         <Modal
           onClick={handleCloseModalForDeleteWithCart}
@@ -137,9 +141,8 @@ const App = () => {
           actions={
             <>
               <Button onClick={handleCloseModalFinishUserApplication}>
-                Ok
-                &nbsp;
-                <i class="fas fa-smile-wink"/>
+                Ok &nbsp;
+                <i class="fas fa-smile-wink" />
               </Button>
             </>
           }
@@ -149,9 +152,7 @@ const App = () => {
         <Route path="/home">
           <Home />
         </Route>
-        <Route path="/products">
-          {!isLoadingProducts && <Products />}
-        </Route>
+        <Route path="/products">{!isLoadingProducts && <Products />}</Route>
         <Route path="/favorites">
           <Favorite />
         </Route>
@@ -160,6 +161,7 @@ const App = () => {
         </Route>
         <Redirect to="/home" />
       </Switch>
+      <Footer />
     </div>
   );
 };

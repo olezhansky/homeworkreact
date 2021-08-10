@@ -5,10 +5,7 @@ import Backdrop from "../Backdrop/Backdrop";
 import PropTypes from "prop-types";
 
 const Modal = ({ header, dataForModalCard, closeButton, actions, onClick }) => {
-  console.log(dataForModalCard);
-
   if (!dataForModalCard) return null 
-
   let styleColor = "";
   if (dataForModalCard.color === "Red") {
     styleColor = styles.Red;

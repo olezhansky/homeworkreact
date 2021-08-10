@@ -1,6 +1,7 @@
 .Products {
   max-width: 1000px;
-  margin: 120px auto 0;
+  min-height: 90vh;
+  margin: 120px auto 120px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;

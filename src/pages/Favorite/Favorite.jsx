@@ -8,7 +8,7 @@ const Favorite = () => {
   const favoriteProducts = useSelector((state) => state.favoriteProducts);
 
   return (
-    <>
+    <div className={styles.FavoriteWrapper}>
       {!favoriteProducts.length && (
         <h2 className={styles.Title}>Favorites empty!</h2>
       )}
@@ -17,7 +17,7 @@ const Favorite = () => {
           return <FavoriteProduct product={product} key={product.id} />;
         })}
       </ul>
-    </>
+    </div>
   );
 };
 
