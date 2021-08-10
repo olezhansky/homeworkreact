@@ -149,7 +149,7 @@ const App = () => {
         />
       )}
       <Switch>
-        <Route path="/home">
+        <Route path="/homeworkreact">
           <Home />
         </Route>
         <Route path="/products">{!isLoadingProducts && <Products />}</Route>

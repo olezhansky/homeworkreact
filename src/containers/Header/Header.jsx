@@ -14,7 +14,7 @@ const Header = () => {
       <nav className={styles.Menu}>
         <ul className={styles.MenuList}>
           <li>
-            <NavLink activeClassName={styles.active} to="/home">
+            <NavLink activeClassName={styles.active} to="/homeworkreact">
               Home
             </NavLink>
           </li>
