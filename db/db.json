@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Boxing gloves BOXER 12 ounces",
+    "price": "80",
+    "img": "img/product1.jpg",
+    "code": "123456789",
+    "color": "Black",
+    "id": "1"
+  },
+  {
+    "name": "BOXER Elite Boxing Gloves 12 ounces",
+    "price": "160",
+    "img": "img/product2.jpg",
+    "code": "223456789",
+    "color": "Black",
+    "id": "2"
+  },
+  {
+    "name": "Excalibur Typhon Boxing Gloves 10 ounces",
+    "price": "180",
+    "img": "img/product3.jpg",
+    "code": "323456789",
+    "color": "Blue",
+    "id": "3"
+  },
+  {
+    "name": "Thor Competition (PU) boxing gloves 10 ounces",
+    "price": "170",
+    "img": "img/product4.jpg",
+    "code": "423456784",
+    "color": "Blue",
+    "id": "4"
+  },
+  {
+    "name": "BOXER Elite boxing gloves 10 ounces",
+    "price": "105",
+    "img": "img/product5.jpg",
+    "code": "523456784",
+    "color": "Red",
+    "id": "5"
+  },
+  {
+    "name": "Boxing gloves PowerPlay 3023 12 ounces",
+    "price": "190",
+    "img": "img/product6.jpg",
+    "code": "623456784",
+    "color": "Red",
+    "id": "6"
+  },
+  {
+    "name": "Boxing gloves BOXER 10 ounces",
+    "price": "75",
+    "img": "img/product7.jpg",
+    "code": "723456784",
+    "color": "Black",
+    "id": "7"
+  },
+  {
+    "name": "Boxing Gloves PowerPlay 3015 14 ounces",
+    "price": "200",
+    "img": "img/product8.jpg",
+    "code": "823456784",
+    "color": "Red",
+    "id": "8"
+  },
+  {
+    "name": "Thor Ultimate PU boxing gloves 16 ounces",
+    "price": "120",
+    "img": "img/product9.jpg",
+    "code": "923456784",
+    "color": "Blue",
+    "id": "9"
+  },{
+    "name": "Boxing Gloves PowerPlay 3004 18 ounces Black",
+    "price": "100",
+    "img": "img/product10.jpg",
+    "code": "103456784",
+    "color": "Black",
+    "id": "10"
+  }
+]
+  
